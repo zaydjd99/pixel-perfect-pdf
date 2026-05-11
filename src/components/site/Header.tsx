@@ -1,23 +1,37 @@
 import { Play, ChevronDown } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
-const nav = ["Home", "Pricing", "Tutorials", "Referral", "Reseller", "FAQ", "Contact"];
+const nav = [
+  { label: "Home", to: "/" },
+  { label: "Pricing", to: "/pricing" },
+  { label: "Tutorials", to: "/tutorials" },
+  { label: "Referral", to: "/referral" },
+  { label: "Reseller", to: "/" },
+  { label: "FAQ", to: "/" },
+  { label: "Contact", to: "/" },
+] as const;
 
 export function Header() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/40">
       <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2 font-semibold tracking-wide">
+        <Link to="/" className="flex items-center gap-2 font-semibold tracking-wide text-primary">
           <span className="grid place-items-center w-7 h-7 rounded-md bg-gradient-primary text-primary-foreground">
             <Play className="w-3.5 h-3.5 fill-current" />
           </span>
           <span>TIVIPLANET</span>
-        </a>
+        </Link>
 
         <nav className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
           {nav.map((n) => (
-            <a key={n} href="#" className="hover:text-foreground transition-colors">
-              {n}
-            </a>
+            <Link
+              key={n.label}
+              to={n.to}
+              className="hover:text-foreground transition-colors"
+              activeProps={{ className: "text-foreground" }}
+            >
+              {n.label}
+            </Link>
           ))}
         </nav>
 
