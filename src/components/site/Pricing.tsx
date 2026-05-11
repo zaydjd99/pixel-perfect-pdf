@@ -1,0 +1,144 @@
+import { Check, Smartphone, Monitor } from "lucide-react";
+
+const single = [
+  { name: "1 Month", price: "€15", per: "/ month", sub: "" },
+  { name: "3 Months", price: "€30", per: "/ quarterly", sub: "≈ €10 / month" },
+  { name: "6 Months", price: "€45", per: "/ semi-annually", sub: "≈ €7.50 / month" },
+  { name: "1 Year", price: "€70", per: "/ year", sub: "≈ €5.83 / month", best: true },
+];
+
+const multi = [
+  { name: "2 Devices", price: "€120", per: "/year", sub: "≈ €5 / device / month", conn: "2 simultaneous connections" },
+  { name: "3 Devices", price: "€160", per: "/year", sub: "≈ €4.44 / device / month", conn: "3 simultaneous connections", reco: true },
+  { name: "4 Devices", price: "€200", per: "/year", sub: "≈ €4.17 / device / month", conn: "4 simultaneous connections" },
+];
+
+const features = ["20,000+ international channels (HD / FHD / 4K & UHD)", "Thousands of movies & series (FHD, 4K & HDR)", "Catch-Up TV on most channels"];
+
+function Plan({ p }: { p: (typeof single)[number] }) {
+  const isBest = !!p.best;
+  return (
+    <div
+      className={`relative rounded-2xl border p-6 bg-surface/50 ${
+        isBest ? "border-primary/60 bg-primary/5 shadow-glow" : "border-border"
+      }`}
+    >
+      {isBest && (
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-wider px-3 py-1 rounded-full bg-gradient-primary text-primary-foreground font-semibold">
+          ★ Best Value
+        </div>
+      )}
+      <div className="font-semibold">{p.name}</div>
+      <div className="mt-3 flex items-end gap-1">
+        <span className="text-4xl font-bold">{p.price}</span>
+        <span className="text-sm text-muted-foreground mb-1.5">{p.per}</span>
+      </div>
+      {p.sub && <div className="text-xs text-muted-foreground mt-1">{p.sub}</div>}
+      <ul className="mt-5 space-y-2.5 text-sm">
+        {features.map((f) => (
+          <li key={f} className="flex gap-2 text-muted-foreground">
+            <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+            <span>{f}</span>
+          </li>
+        ))}
+      </ul>
+      <div className="text-xs text-muted-foreground mt-3">▾ Show 3 more features</div>
+      <button
+        className={`mt-5 w-full py-2.5 rounded-md font-medium ${
+          isBest
+            ? "bg-gradient-primary text-primary-foreground"
+            : "bg-surface-2 hover:bg-surface-3 text-foreground"
+        }`}
+      >
+        Buy Now
+      </button>
+      <div className="text-xs text-center text-muted-foreground mt-3">⚡ Instant activation</div>
+    </div>
+  );
+}
+
+export function Pricing() {
+  return (
+    <section className="mx-auto max-w-7xl px-6 py-20">
+      <div className="text-center">
+        <span className="inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary">
+          ✦ Simple Pricing
+        </span>
+        <h2 className="mt-4 text-3xl sm:text-4xl font-bold">
+          Choose your <span className="text-gradient-green">perfect plan</span>
+        </h2>
+        <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
+          Not ready to commit yet? You can request a{" "}
+          <span className="text-primary underline decoration-dotted">free 1-day trial</span> before
+          buying any plan — no payment needed.
+        </p>
+        <p className="mt-3 text-xs text-muted-foreground">
+          7-day money-back guarantee · Instant activation · Support daily 09–24h
+        </p>
+      </div>
+
+      <div className="mt-10">
+        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
+          <Smartphone className="w-4 h-4" /> 1 Device · 1 Connection
+        </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {single.map((p) => (
+            <Plan key={p.name} p={p} />
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-14">
+        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
+          <Monitor className="w-4 h-4" /> Multiple Devices · 1 Year
+        </div>
+        <div className="grid md:grid-cols-3 gap-5">
+          {multi.map((p) => (
+            <div
+              key={p.name}
+              className={`relative rounded-2xl border p-6 bg-surface/50 ${
+                p.reco ? "border-primary/60 bg-primary/5 shadow-glow" : "border-border"
+              }`}
+            >
+              {p.reco && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-wider px-3 py-1 rounded-full bg-gradient-primary text-primary-foreground font-semibold">
+                  ✦ Recommended
+                </div>
+              )}
+              <div className="font-semibold">{p.name}</div>
+              <div className="mt-3 flex items-end gap-1">
+                <span className="text-4xl font-bold">{p.price}</span>
+                <span className="text-sm text-muted-foreground mb-1.5">{p.per}</span>
+              </div>
+              <div className="text-xs text-primary mt-1">{p.sub}</div>
+              <ul className="mt-5 space-y-2.5 text-sm text-muted-foreground">
+                <li className="flex gap-2">
+                  <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" /> {p.conn}
+                </li>
+                {features.slice(0, 2).map((f) => (
+                  <li key={f} className="flex gap-2">
+                    <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="text-xs text-muted-foreground mt-3">▾ Show 4 more features</div>
+              <button
+                className={`mt-5 w-full py-2.5 rounded-md font-medium ${
+                  p.reco
+                    ? "bg-gradient-primary text-primary-foreground"
+                    : "bg-surface-2 hover:bg-surface-3 text-foreground"
+                }`}
+              >
+                Buy Now
+              </button>
+              <div className="text-xs text-center text-muted-foreground mt-3">
+                ⚡ Instant activation
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
