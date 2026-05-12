@@ -16,7 +16,7 @@ export function Features() {
     <section className="mx-auto max-w-7xl px-6 py-20">
       <div className="text-center">
         <span className="inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary">
-          Why TIVIPLANET?
+          Why NEXASTREAM?
         </span>
         <h2 className="mt-4 text-3xl sm:text-4xl font-bold">
           Everything you need for <span className="text-gradient-green">perfect streaming</span>

@@ -1,7 +1,7 @@
 import { Star } from "lucide-react";
 
 const reviews = [
-  { n: "Sarah J.", l: "Switched from Sky", t: "I cancelled Netflix and Sky because TIVIPLANET has everything in one place. Massive VOD library, perfect stream quality. Best purchase in a long time!" },
+  { n: "Sarah J.", l: "Switched from Sky", t: "I cancelled Netflix and Sky because NEXASTREAM has everything in one place. Massive VOD library, perfect stream quality. Best purchase in a long time!" },
   { n: "Marco D.", l: "Football fan", t: "All Champions League matches in 4K with zero buffering. The integrated VPN is a brilliant touch. Highly recommend." },
   { n: "Lena K.", l: "Family of 4", t: "Set it up on the kids' tablets, my Smart TV and my partner's phone in under 10 minutes. Support replied within minutes." },
 ];
@@ -17,7 +17,7 @@ export function Reviews() {
           Loved by <span className="text-gradient-green">customers</span>
         </h2>
         <p className="mt-4 text-muted-foreground">
-          See for yourself — here's what our customers say about TIVIPLANET.
+          See for yourself — here's what our customers say about NEXASTREAM.
         </p>
       </div>
 

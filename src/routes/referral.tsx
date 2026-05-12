@@ -7,10 +7,10 @@ export const Route = createFileRoute("/referral")({
   component: ReferralPage,
   head: () => ({
     meta: [
-      { title: "Referral Program — TIVIPLANET" },
+      { title: "Referral Program — NEXASTREAM" },
       { name: "description", content: "Invite friends and earn 1 free month for every 12 months they buy. No codes, no hassle." },
       { property: "og:title", content: "Invite friends. Get rewarded." },
-      { property: "og:description", content: "Refer someone to TiviPlanet and get free months added to your subscription." },
+      { property: "og:description", content: "Refer someone to NexaStream and get free months added to your subscription." },
     ],
   }),
 });
@@ -58,7 +58,7 @@ function ReferralPage() {
               <span className="text-gradient-green">Get rewarded.</span>
             </h1>
             <p className="mt-5 text-muted-foreground max-w-lg">
-              Refer someone to TiviPlanet. Once their subscription is confirmed, we add free months
+              Refer someone to NexaStream. Once their subscription is confirmed, we add free months
               directly to your account — no codes, no hassle.
             </p>
 
@@ -83,12 +83,12 @@ function ReferralPage() {
             </div>
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <button className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/40 text-primary text-sm hover:bg-primary/10 transition">
-                <MessageCircle className="w-4 h-4" /> Live Chat
-              </button>
-              <button className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#229ED9] text-white text-sm hover:opacity-90 transition">
+              <a href="https://wa.me/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#25D366] text-white text-sm hover:opacity-90 transition">
+                <MessageCircle className="w-4 h-4" /> WhatsApp
+              </a>
+              <a href="https://t.me/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#229ED9] text-white text-sm hover:opacity-90 transition">
                 <Send className="w-4 h-4" /> Telegram
-              </button>
+              </a>
               <Link
                 to="/pricing"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border text-sm text-foreground hover:bg-surface-2 transition"
@@ -142,7 +142,7 @@ function ReferralPage() {
 
             <div className="mt-4 rounded-xl border border-border bg-surface-2/40 p-3 flex items-center gap-2 text-xs text-muted-foreground">
               <Users className="w-4 h-4 text-primary" />
-              Open to all existing customers with an active TiviPlanet subscription.
+              Open to all existing customers with an active NexaStream subscription.
             </div>
           </div>
         </div>
@@ -154,12 +154,12 @@ function ReferralPage() {
             Just message our support with your email and your friend's email after they subscribe.
           </p>
           <div className="mt-6 grid sm:grid-cols-3 gap-3 max-w-3xl mx-auto">
-            <button className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-primary text-primary-foreground font-medium shadow-glow hover:opacity-90 transition">
-              <MessageCircle className="w-4 h-4" /> Live Chat
-            </button>
-            <button className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#229ED9] text-white font-medium hover:opacity-90 transition">
+            <a href="https://wa.me/" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#25D366] text-white font-medium shadow-glow hover:opacity-90 transition">
+              <MessageCircle className="w-4 h-4" /> WhatsApp
+            </a>
+            <a href="https://t.me/" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#229ED9] text-white font-medium hover:opacity-90 transition">
               <Send className="w-4 h-4" /> Telegram
-            </button>
+            </a>
             <button className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full border border-border text-foreground hover:bg-surface-2 transition">
               <Mail className="w-4 h-4" /> Email
             </button>

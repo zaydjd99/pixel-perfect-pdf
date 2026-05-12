@@ -8,9 +8,9 @@ export const Route = createFileRoute("/tutorials")({
   component: TutorialsPage,
   head: () => ({
     meta: [
-      { title: "Tutorials — How to set up TiviPlanet" },
+      { title: "Tutorials — How to set up NexaStream" },
       { name: "description", content: "Step-by-step setup instructions for every device — Fire TV, Android, iOS, Windows, Roku, LG, Samsung, MAG/STB." },
-      { property: "og:title", content: "How to set up TiviPlanet" },
+      { property: "og:title", content: "How to set up NexaStream" },
       { property: "og:description", content: "Setup guides for every device in less than 2 minutes." },
     ],
   }),
@@ -36,18 +36,18 @@ function TutorialsPage() {
           <span className="inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary">
             Setup Guide
           </span>
-          <h1 className="mt-4 text-4xl sm:text-5xl font-bold">How to set up TiviPlanet</h1>
+          <h1 className="mt-4 text-4xl sm:text-5xl font-bold">How to set up NexaStream</h1>
           <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
             Step-by-step instructions for every device — takes less than 2 minutes. Need help? Our team is here instantly.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#229ED9] text-white text-sm font-medium hover:opacity-90 transition">
+            <a href="https://wa.me/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366] text-white text-sm font-medium hover:opacity-90 transition">
+              <MessageCircle className="w-4 h-4" /> WhatsApp
+            </a>
+            <a href="https://t.me/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#229ED9] text-white text-sm font-medium hover:opacity-90 transition">
               <Send className="w-4 h-4" /> Telegram
-            </button>
-            <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-primary/40 text-primary text-sm font-medium hover:bg-primary/10 transition">
-              <MessageCircle className="w-4 h-4" /> Live Chat
-            </button>
+            </a>
           </div>
 
           <div className="mt-14">

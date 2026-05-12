@@ -61,7 +61,7 @@ export function CTA() {
           </div>
 
           <p className="mt-5 text-xs text-muted-foreground text-center">
-            Join thousands of happy customers and try TIVIPLANET today.
+            Join thousands of happy customers and try NEXASTREAM today.
           </p>
         </div>
       </div>

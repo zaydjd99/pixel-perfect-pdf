@@ -14,7 +14,7 @@ export function Footer() {
             <span className="grid place-items-center w-7 h-7 rounded-md bg-gradient-primary text-primary-foreground">
               <Play className="w-3.5 h-3.5 fill-current" />
             </span>
-            TIVIPLANET
+            NEXASTREAM
           </div>
           <p className="mt-4 text-sm text-muted-foreground">
             Seamless IPTV, premium stability, and friendly human support.
@@ -44,7 +44,7 @@ export function Footer() {
       </div>
       <div className="border-t border-border/40">
         <div className="mx-auto max-w-7xl px-6 py-5 flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground">
-          <div>© 2018 TIVIPLANET. All rights reserved.</div>
+          <div>© 2018 NEXASTREAM. All rights reserved.</div>
           <div className="flex flex-wrap gap-2">
             <span>Payment methods:</span>
             {["Visa", "Mastercard", "PayPal", "iDEAL", "Sofort", "GiroPay", "Crypto"].map((p) => (
