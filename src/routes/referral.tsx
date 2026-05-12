@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Gift, Info, MessageCircle, Send, ArrowRight, Check, Clock, Users, Mail } from "lucide-react";
+import { supportEmail, telegramUrl, whatsappUrl } from "@/lib/site-links";
 
 export const Route = createFileRoute("/referral")({
   component: ReferralPage,
@@ -83,10 +84,10 @@ function ReferralPage() {
             </div>
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <a href="https://wa.me/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#25D366] text-white text-sm hover:opacity-90 transition">
+              <a href={whatsappUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-whatsapp text-contact-foreground text-sm hover:opacity-90 transition">
                 <MessageCircle className="w-4 h-4" /> WhatsApp
               </a>
-              <a href="https://t.me/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#229ED9] text-white text-sm hover:opacity-90 transition">
+              <a href={telegramUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-telegram text-contact-foreground text-sm hover:opacity-90 transition">
                 <Send className="w-4 h-4" /> Telegram
               </a>
               <Link
@@ -154,15 +155,15 @@ function ReferralPage() {
             Just message our support with your email and your friend's email after they subscribe.
           </p>
           <div className="mt-6 grid sm:grid-cols-3 gap-3 max-w-3xl mx-auto">
-            <a href="https://wa.me/" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#25D366] text-white font-medium shadow-glow hover:opacity-90 transition">
+            <a href={whatsappUrl} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-whatsapp text-contact-foreground font-medium shadow-glow hover:opacity-90 transition">
               <MessageCircle className="w-4 h-4" /> WhatsApp
             </a>
-            <a href="https://t.me/" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#229ED9] text-white font-medium hover:opacity-90 transition">
+            <a href={telegramUrl} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-telegram text-contact-foreground font-medium hover:opacity-90 transition">
               <Send className="w-4 h-4" /> Telegram
             </a>
-            <button className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full border border-border text-foreground hover:bg-surface-2 transition">
+            <a href={supportEmail} className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full border border-border text-foreground hover:bg-surface-2 transition">
               <Mail className="w-4 h-4" /> Email
-            </button>
+            </a>
           </div>
         </div>
       </main>

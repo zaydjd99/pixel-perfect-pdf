@@ -1,5 +1,7 @@
 import { ChevronDown } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { useLanguage } from "@/lib/language";
 
 const items = [
   ["Does one account support multiple devices?", "By default each subscription supports 1 device. Multi-device plans are available for 2, 3 or 4 simultaneous connections."],
@@ -15,6 +17,21 @@ const items = [
 
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
+  const { language } = useLanguage();
+  const isGerman = language === "de";
+  const translatedItems = isGerman
+    ? [
+        ["Kann ich ein Konto auf mehreren Geräten verwenden?", "Standardmäßig unterstützt jedes Abonnement 1 Gerät. Multi-Device-Pläne sind für 2, 3 oder 4 gleichzeitige Verbindungen verfügbar."],
+        ["Bietet ihr eine kostenlose Testversion an?", "Ja — fordere vor dem Kauf einen kostenlosen 1-Tages-Test an, ohne Zahlungsdaten."],
+        ["Welche Zahlungsmethoden sind verfügbar?", "Wir akzeptieren Visa, Mastercard, PayPal, iDEAL, Sofort, GiroPay, Apple Pay, Google Pay und Krypto."],
+        ["Wie lange dauert die Lieferung?", "Die Aktivierung erfolgt sofort nach Zahlungsbestätigung — normalerweise in wenigen Sekunden."],
+        ["Welche Länder sind enthalten?", "Sender aus Europa und weltweit: UK, Deutschland, Frankreich, Italien, Spanien, Niederlande, USA und viele mehr."],
+        ["Verlängert sich mein Abonnement automatisch?", "Nein, alle Abonnements sind Einmalzahlungen. Du verlängerst manuell, wann du möchtest."],
+        ["Habt ihr ein Empfehlungsprogramm?", "Ja, empfiehl Freunde und erhalte Guthaben bzw. kostenlose Monate für qualifizierte Käufe."],
+        ["Wie kontaktiere ich den Support bei einem Problem?", "Kontaktiere uns täglich von 09:00 bis 00:00 per WhatsApp oder Telegram."],
+        ["Ist Adult-Inhalt (18+) verfügbar?", "Adult-Inhalt ist nicht standardmäßig enthalten, aber auf Anfrage verfügbar."],
+      ]
+    : items;
   return (
     <section className="mx-auto max-w-7xl px-6 py-20">
       <div className="text-center">
@@ -22,16 +39,16 @@ export function FAQ() {
           FAQ
         </span>
         <h2 className="mt-4 text-3xl sm:text-4xl font-bold">
-          Frequently Asked <span className="text-gradient-green">Questions</span>
+          {isGerman ? "Häufig gestellte " : "Frequently Asked "}<span className="text-gradient-green">{isGerman ? "Fragen" : "Questions"}</span>
         </h2>
         <p className="mt-4 text-muted-foreground">
-          Everything you need to know about NEXASTREAM. Can't find your answer?{" "}
-          <a className="text-primary underline">View the full FAQ page</a>.
+          {isGerman ? "Alles Wichtige zu NEXASTREAM. Keine Antwort gefunden? " : "Everything you need to know about NEXASTREAM. Can't find your answer? "}
+          <Link to="/faq" className="text-primary underline">{isGerman ? "Vollständige FAQ-Seite anzeigen" : "View the full FAQ page"}</Link>.
         </p>
       </div>
 
       <div className="mt-10 max-w-3xl mx-auto divide-y divide-border rounded-xl border border-border bg-surface/40 overflow-hidden">
-        {items.map(([q, a], i) => (
+        {translatedItems.map(([q, a], i) => (
           <div key={q}>
             <button
               onClick={() => setOpen(open === i ? null : i)}

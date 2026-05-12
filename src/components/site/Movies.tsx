@@ -1,4 +1,5 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 
 const posters = [
   { t: "Galactic Wars", g: "from-orange-500/40 to-red-700/40" },
@@ -9,6 +10,9 @@ const posters = [
 ];
 
 export function Movies() {
+  const [offset, setOffset] = useState(0);
+  const visiblePosters = posters.map((_, index) => posters[(index + offset) % posters.length]);
+
   return (
     <section className="bg-surface/40 border-y border-border/40">
       <div className="mx-auto max-w-7xl px-6 py-16">
@@ -22,17 +26,17 @@ export function Movies() {
             </p>
           </div>
           <div className="flex gap-2">
-            <button className="w-9 h-9 grid place-items-center rounded-full border border-border bg-surface hover:bg-surface-2">
+            <button type="button" onClick={() => setOffset((offset + posters.length - 1) % posters.length)} className="w-9 h-9 grid place-items-center rounded-full border border-border bg-surface hover:bg-surface-2">
               <ChevronLeft className="w-4 h-4" />
             </button>
-            <button className="w-9 h-9 grid place-items-center rounded-full border border-border bg-surface hover:bg-surface-2">
+            <button type="button" onClick={() => setOffset((offset + 1) % posters.length)} className="w-9 h-9 grid place-items-center rounded-full border border-border bg-surface hover:bg-surface-2">
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-          {posters.map((p) => (
+          {visiblePosters.map((p) => (
             <div
               key={p.t}
               className={`aspect-[2/3] rounded-lg bg-gradient-to-br ${p.g} border border-border relative overflow-hidden group`}

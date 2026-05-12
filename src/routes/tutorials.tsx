@@ -1,8 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { CTA } from "@/components/site/CTA";
 import { Send, MessageCircle, ArrowRight, Tv, Smartphone, Apple, Monitor, Cast, Box } from "lucide-react";
+import { telegramUrl, whatsappUrl } from "@/lib/site-links";
+import { useLanguage } from "@/lib/language";
 
 export const Route = createFileRoute("/tutorials")({
   component: TutorialsPage,
@@ -28,31 +30,34 @@ const devices = [
 ];
 
 function TutorialsPage() {
+  const { language } = useLanguage();
+  const isGerman = language === "de";
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
       <main>
         <section className="mx-auto max-w-7xl px-6 py-16 text-center">
           <span className="inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary">
-            Setup Guide
+            {isGerman ? "Setup-Anleitung" : "Setup Guide"}
           </span>
-          <h1 className="mt-4 text-4xl sm:text-5xl font-bold">How to set up NexaStream</h1>
+          <h1 className="mt-4 text-4xl sm:text-5xl font-bold">{isGerman ? "So richtest du NexaStream ein" : "How to set up NexaStream"}</h1>
           <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-            Step-by-step instructions for every device — takes less than 2 minutes. Need help? Our team is here instantly.
+            {isGerman ? "Schritt-für-Schritt-Anleitungen für jedes Gerät — dauert weniger als 2 Minuten. Brauchst du Hilfe? Unser Team ist sofort da." : "Step-by-step instructions for every device — takes less than 2 minutes. Need help? Our team is here instantly."}
           </p>
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <a href="https://wa.me/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366] text-white text-sm font-medium hover:opacity-90 transition">
+            <a href={whatsappUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-whatsapp text-contact-foreground text-sm font-medium hover:opacity-90 transition">
               <MessageCircle className="w-4 h-4" /> WhatsApp
             </a>
-            <a href="https://t.me/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#229ED9] text-white text-sm font-medium hover:opacity-90 transition">
+            <a href={telegramUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-telegram text-contact-foreground text-sm font-medium hover:opacity-90 transition">
               <Send className="w-4 h-4" /> Telegram
             </a>
           </div>
 
           <div className="mt-14">
             <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-6">
-              Select your device
+              {isGerman ? "Wähle dein Gerät" : "Select your device"}
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
               {devices.map((d) => (
@@ -64,9 +69,9 @@ function TutorialsPage() {
                     <d.icon className="w-12 h-12 text-primary" />
                   </div>
                   <div className="font-semibold mb-3">{d.name}</div>
-                  <button className="w-full inline-flex items-center justify-center gap-2 text-xs uppercase tracking-wider px-3 py-2 rounded-md border border-border bg-surface-2/60 text-muted-foreground group-hover:text-primary group-hover:border-primary/40 transition">
-                    Setup Guide <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                  <Link to="/contact" className="w-full inline-flex items-center justify-center gap-2 text-xs uppercase tracking-wider px-3 py-2 rounded-md border border-border bg-surface-2/60 text-muted-foreground group-hover:text-primary group-hover:border-primary/40 transition">
+                    {isGerman ? "Setup-Hilfe" : "Setup Guide"} <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
               ))}
             </div>
