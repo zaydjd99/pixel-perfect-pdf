@@ -9,7 +9,7 @@ const items = [
   ["What countries are included?", "Channels from across Europe and the world: UK, Germany, France, Italy, Spain, Netherlands, USA, and many more."],
   ["Will my subscription renew automatically?", "No, all subscriptions are one-time payments. You renew manually whenever you choose."],
   ["Do you have a referral program?", "Yes, share your referral link and earn credit on every purchase made by a friend."],
-  ["How do I contact support if I have an issue?", "Reach out via Live Chat or Telegram, daily from 09:00 to 00:00."],
+  ["How do I contact support if I have an issue?", "Reach out via WhatsApp or Telegram, daily from 09:00 to 00:00."],
   ["Is adult (18+) content available?", "Adult content is not included by default but is available upon request."],
 ];
 
