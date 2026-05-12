@@ -3,13 +3,13 @@ import { Link } from "@tanstack/react-router";
 import { useLanguage } from "@/lib/language";
 
 const nav = [
-  { label: "Home", to: "/" },
-  { label: "Pricing", to: "/pricing" },
-  { label: "Tutorials", to: "/tutorials" },
-  { label: "Referral", to: "/referral" },
-  { label: "Reseller", to: "/" },
-  { label: "FAQ", to: "/" },
-  { label: "Contact", to: "/" },
+  { en: "Home", de: "Start", to: "/" },
+  { en: "Pricing", de: "Preise", to: "/pricing" },
+  { en: "Tutorials", de: "Tutorials", to: "/tutorials" },
+  { en: "Referral", de: "Empfehlung", to: "/referral" },
+  { en: "Reseller", de: "Reseller", to: "/reseller" },
+  { en: "FAQ", de: "FAQ", to: "/faq" },
+  { en: "Contact", de: "Kontakt", to: "/contact" },
 ] as const;
 
 export function Header() {
@@ -28,12 +28,12 @@ export function Header() {
         <nav className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
           {nav.map((n) => (
             <Link
-              key={n.label}
+              key={n.en}
               to={n.to}
               className="hover:text-foreground transition-colors"
               activeProps={{ className: "text-foreground" }}
             >
-              {n.label}
+              {language === "de" ? n.de : n.en}
             </Link>
           ))}
         </nav>
@@ -57,7 +57,7 @@ export function Header() {
             <ChevronDown className="w-3 h-3 mx-1" />
           </div>
           <Link to="/pricing" className="text-sm font-medium px-4 py-2 rounded-md bg-gradient-primary text-primary-foreground shadow-glow hover:opacity-90 transition">
-            Get Package
+            {language === "de" ? "Paket wählen" : "Get Package"}
           </Link>
         </div>
       </div>
