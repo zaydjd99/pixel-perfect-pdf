@@ -19,7 +19,7 @@ export function Header() {
           <span className="grid place-items-center w-7 h-7 rounded-md bg-gradient-primary text-primary-foreground">
             <Play className="w-3.5 h-3.5 fill-current" />
           </span>
-          <span>TIVIPLANET</span>
+          <span>NEXASTREAM</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">

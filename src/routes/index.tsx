@@ -15,7 +15,7 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "TIVIPLANET — Stream TV like never before" },
+      { title: "NEXASTREAM — Stream TV like never before" },
       {
         name: "description",
         content:

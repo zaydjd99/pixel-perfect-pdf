@@ -25,7 +25,7 @@ export function FAQ() {
           Frequently Asked <span className="text-gradient-green">Questions</span>
         </h2>
         <p className="mt-4 text-muted-foreground">
-          Everything you need to know about TIVIPLANET. Can't find your answer?{" "}
+          Everything you need to know about NEXASTREAM. Can't find your answer?{" "}
           <a className="text-primary underline">View the full FAQ page</a>.
         </p>
       </div>

@@ -8,9 +8,9 @@ export const Route = createFileRoute("/tutorials")({
   component: TutorialsPage,
   head: () => ({
     meta: [
-      { title: "Tutorials — How to set up TiviPlanet" },
+      { title: "Tutorials — How to set up NexaStream" },
       { name: "description", content: "Step-by-step setup instructions for every device — Fire TV, Android, iOS, Windows, Roku, LG, Samsung, MAG/STB." },
-      { property: "og:title", content: "How to set up TiviPlanet" },
+      { property: "og:title", content: "How to set up NexaStream" },
       { property: "og:description", content: "Setup guides for every device in less than 2 minutes." },
     ],
   }),
@@ -36,7 +36,7 @@ function TutorialsPage() {
           <span className="inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary">
             Setup Guide
           </span>
-          <h1 className="mt-4 text-4xl sm:text-5xl font-bold">How to set up TiviPlanet</h1>
+          <h1 className="mt-4 text-4xl sm:text-5xl font-bold">How to set up NexaStream</h1>
           <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
             Step-by-step instructions for every device — takes less than 2 minutes. Need help? Our team is here instantly.
           </p>
