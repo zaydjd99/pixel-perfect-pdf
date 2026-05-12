@@ -1,4 +1,7 @@
 import { Tv, Smartphone, Monitor, Cast, Box } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { useLanguage } from "@/lib/language";
+import { telegramUrl, whatsappUrl } from "@/lib/site-links";
 
 const devices = [
   { i: Tv, n: "Smart TV", d: "Samsung · LG · Sony" },
@@ -9,18 +12,20 @@ const devices = [
 ];
 
 export function Devices() {
+  const { language } = useLanguage();
+  const isGerman = language === "de";
+
   return (
     <section className="mx-auto max-w-7xl px-6 py-20">
       <div className="text-center">
         <span className="inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary">
-          Compatible Devices
+          {isGerman ? "Kompatible Geräte" : "Compatible Devices"}
         </span>
         <h2 className="mt-4 text-3xl sm:text-4xl font-bold">
-          Available on <span className="text-gradient-green">every device</span> you own
+          {isGerman ? "Verfügbar auf " : "Available on "}<span className="text-gradient-green">{isGerman ? "jedem Gerät" : "every device"}</span>{isGerman ? " das du besitzt" : " you own"}
         </h2>
         <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-          NEXASTREAM works on all your devices. Set up in minutes and start watching immediately —
-          no technical knowledge required.
+          {isGerman ? "NEXASTREAM funktioniert auf all deinen Geräten. In wenigen Minuten einrichten und sofort streamen — ohne technisches Wissen." : "NEXASTREAM works on all your devices. Set up in minutes and start watching immediately — no technical knowledge required."}
         </p>
       </div>
 
@@ -52,22 +57,21 @@ export function Devices() {
             </span>
           ))}
         </div>
-        <a className="text-sm text-primary hover:underline">See setup tutorials →</a>
+        <Link to="/tutorials" className="text-sm text-primary hover:underline">{isGerman ? "Setup-Tutorials ansehen" : "See setup tutorials"} →</Link>
       </div>
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-border bg-surface/40 p-4">
         <div>
-          <div className="text-sm font-medium">Need help getting started?</div>
+          <div className="text-sm font-medium">{isGerman ? "Brauchst du Hilfe beim Start?" : "Need help getting started?"}</div>
           <div className="text-xs text-muted-foreground">
-            Our support team gets you up and running in minutes — available daily via WhatsApp or
-            Telegram.
+            {isGerman ? "Unser Support-Team richtet dich in Minuten ein — täglich per WhatsApp oder Telegram verfügbar." : "Our support team gets you up and running in minutes — available daily via WhatsApp or Telegram."}
           </div>
         </div>
         <div className="flex gap-2">
-          <a href="https://wa.me/" target="_blank" rel="noreferrer" className="text-sm font-medium px-4 py-2 rounded-md bg-[#25D366] text-white hover:opacity-90 transition">
+          <a href={whatsappUrl} target="_blank" rel="noreferrer" className="text-sm font-medium px-4 py-2 rounded-md bg-whatsapp text-contact-foreground hover:opacity-90 transition">
             WhatsApp
           </a>
-          <a href="https://t.me/" target="_blank" rel="noreferrer" className="text-sm font-medium px-4 py-2 rounded-md bg-[#229ED9] text-white hover:opacity-90 transition">
+          <a href={telegramUrl} target="_blank" rel="noreferrer" className="text-sm font-medium px-4 py-2 rounded-md bg-telegram text-contact-foreground hover:opacity-90 transition">
             Telegram
           </a>
         </div>
