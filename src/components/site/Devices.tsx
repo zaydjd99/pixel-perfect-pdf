@@ -59,13 +59,18 @@ export function Devices() {
         <div>
           <div className="text-sm font-medium">Need help getting started?</div>
           <div className="text-xs text-muted-foreground">
-            Our support team gets you up and running in minutes — available daily via Live Chat or
+            Our support team gets you up and running in minutes — available daily via WhatsApp or
             Telegram.
           </div>
         </div>
-        <button className="text-sm font-medium px-4 py-2 rounded-md bg-gradient-primary text-primary-foreground">
-          💬 Live Chat
-        </button>
+        <div className="flex gap-2">
+          <a href="https://wa.me/" target="_blank" rel="noreferrer" className="text-sm font-medium px-4 py-2 rounded-md bg-[#25D366] text-white hover:opacity-90 transition">
+            WhatsApp
+          </a>
+          <a href="https://t.me/" target="_blank" rel="noreferrer" className="text-sm font-medium px-4 py-2 rounded-md bg-[#229ED9] text-white hover:opacity-90 transition">
+            Telegram
+          </a>
+        </div>
       </div>
     </section>
   );
