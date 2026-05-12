@@ -83,12 +83,12 @@ function ReferralPage() {
             </div>
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <button className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/40 text-primary text-sm hover:bg-primary/10 transition">
-                <MessageCircle className="w-4 h-4" /> Live Chat
-              </button>
-              <button className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#229ED9] text-white text-sm hover:opacity-90 transition">
+              <a href="https://wa.me/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#25D366] text-white text-sm hover:opacity-90 transition">
+                <MessageCircle className="w-4 h-4" /> WhatsApp
+              </a>
+              <a href="https://t.me/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#229ED9] text-white text-sm hover:opacity-90 transition">
                 <Send className="w-4 h-4" /> Telegram
-              </button>
+              </a>
               <Link
                 to="/pricing"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border text-sm text-foreground hover:bg-surface-2 transition"
@@ -154,12 +154,12 @@ function ReferralPage() {
             Just message our support with your email and your friend's email after they subscribe.
           </p>
           <div className="mt-6 grid sm:grid-cols-3 gap-3 max-w-3xl mx-auto">
-            <button className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-primary text-primary-foreground font-medium shadow-glow hover:opacity-90 transition">
-              <MessageCircle className="w-4 h-4" /> Live Chat
-            </button>
-            <button className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#229ED9] text-white font-medium hover:opacity-90 transition">
+            <a href="https://wa.me/" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#25D366] text-white font-medium shadow-glow hover:opacity-90 transition">
+              <MessageCircle className="w-4 h-4" /> WhatsApp
+            </a>
+            <a href="https://t.me/" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#229ED9] text-white font-medium hover:opacity-90 transition">
               <Send className="w-4 h-4" /> Telegram
-            </button>
+            </a>
             <button className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full border border-border text-foreground hover:bg-surface-2 transition">
               <Mail className="w-4 h-4" /> Email
             </button>

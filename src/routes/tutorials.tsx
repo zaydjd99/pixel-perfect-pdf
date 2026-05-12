@@ -42,12 +42,12 @@ function TutorialsPage() {
           </p>
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#229ED9] text-white text-sm font-medium hover:opacity-90 transition">
+            <a href="https://wa.me/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366] text-white text-sm font-medium hover:opacity-90 transition">
+              <MessageCircle className="w-4 h-4" /> WhatsApp
+            </a>
+            <a href="https://t.me/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#229ED9] text-white text-sm font-medium hover:opacity-90 transition">
               <Send className="w-4 h-4" /> Telegram
-            </button>
-            <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-primary/40 text-primary text-sm font-medium hover:bg-primary/10 transition">
-              <MessageCircle className="w-4 h-4" /> Live Chat
-            </button>
+            </a>
           </div>
 
           <div className="mt-14">
