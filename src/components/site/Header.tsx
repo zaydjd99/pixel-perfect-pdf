@@ -1,5 +1,6 @@
 import { Play, ChevronDown } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { useLanguage } from "@/lib/language";
 
 const nav = [
   { label: "Home", to: "/" },
@@ -12,6 +13,8 @@ const nav = [
 ] as const;
 
 export function Header() {
+  const { language, setLanguage } = useLanguage();
+
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/40">
       <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
@@ -36,12 +39,26 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <button className="hidden sm:flex items-center gap-1.5 text-xs px-2.5 py-1.5 rounded-md border border-border bg-surface text-muted-foreground hover:text-foreground">
-            🇬🇧 EN <ChevronDown className="w-3 h-3" />
-          </button>
-          <button className="text-sm font-medium px-4 py-2 rounded-md bg-gradient-primary text-primary-foreground shadow-glow hover:opacity-90 transition">
+          <div className="hidden sm:flex items-center rounded-md border border-border bg-surface p-1 text-xs text-muted-foreground">
+            <button
+              type="button"
+              onClick={() => setLanguage("en")}
+              className={`px-2 py-1 rounded ${language === "en" ? "bg-primary text-primary-foreground" : "hover:text-foreground"}`}
+            >
+              🇬🇧 EN
+            </button>
+            <button
+              type="button"
+              onClick={() => setLanguage("de")}
+              className={`px-2 py-1 rounded ${language === "de" ? "bg-primary text-primary-foreground" : "hover:text-foreground"}`}
+            >
+              🇩🇪 DE
+            </button>
+            <ChevronDown className="w-3 h-3 mx-1" />
+          </div>
+          <Link to="/pricing" className="text-sm font-medium px-4 py-2 rounded-md bg-gradient-primary text-primary-foreground shadow-glow hover:opacity-90 transition">
             Get Package
-          </button>
+          </Link>
         </div>
       </div>
     </header>
