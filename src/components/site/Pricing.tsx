@@ -21,6 +21,7 @@ function Plan({ p }: { p: (typeof single)[number] }) {
   const isBest = !!p.best;
   const { language } = useLanguage();
   const isGerman = language === "de";
+  const { open } = useOrderModal();
   return (
     <div
       className={`relative rounded-2xl border p-6 bg-surface/50 ${
@@ -47,10 +48,9 @@ function Plan({ p }: { p: (typeof single)[number] }) {
         ))}
       </ul>
       <div className="text-xs text-muted-foreground mt-3">▾ {isGerman ? "3 weitere Funktionen anzeigen" : "Show 3 more features"}</div>
-      <a
-        href={whatsappUrl}
-        target="_blank"
-        rel="noreferrer"
+      <button
+        type="button"
+        onClick={() => open(`${p.name} — ${p.price}`)}
         className={`mt-5 w-full py-2.5 rounded-md font-medium ${
           isBest
             ? "bg-gradient-primary text-primary-foreground"
@@ -58,7 +58,7 @@ function Plan({ p }: { p: (typeof single)[number] }) {
         } inline-flex items-center justify-center`}
       >
         {isGerman ? "Jetzt kaufen" : "Buy Now"}
-      </a>
+      </button>
       <div className="text-xs text-center text-muted-foreground mt-3">⚡ {isGerman ? "Sofortaktivierung" : "Instant activation"}</div>
     </div>
   );
