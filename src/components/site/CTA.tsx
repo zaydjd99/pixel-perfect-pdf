@@ -1,10 +1,11 @@
 import { Check } from "lucide-react";
 import { useLanguage } from "@/lib/language";
-import { whatsappUrl } from "@/lib/site-links";
+import { useOrderModal } from "@/lib/order-modal";
 
 export function CTA() {
   const { language } = useLanguage();
   const isGerman = language === "de";
+  const { open } = useOrderModal();
 
   return (
     <section className="mx-auto max-w-7xl px-6 pb-20">
@@ -33,9 +34,9 @@ export function CTA() {
         </div>
 
         <div>
-          <a href={whatsappUrl} target="_blank" rel="noreferrer" className="w-full py-4 rounded-full bg-gradient-primary text-primary-foreground font-semibold shadow-glow hover:opacity-90 transition inline-flex items-center justify-center">
+          <button type="button" onClick={() => open(isGerman ? "24H Gratis-Test" : "24H Free Trial")} className="w-full py-4 rounded-full bg-gradient-primary text-primary-foreground font-semibold shadow-glow hover:opacity-90 transition inline-flex items-center justify-center">
             {isGerman ? "Jetzt kostenlos testen" : "Get Free Trial"} →
-          </a>
+          </button>
           <div className="mt-5 grid grid-cols-2 gap-3 text-xs text-muted-foreground">
             {[
               isGerman ? "Keine Kreditkarte nötig" : "No credit card needed",
@@ -54,7 +55,7 @@ export function CTA() {
               {isGerman ? "Akzeptierte Zahlungsmethoden" : "Accepted Payment Methods"}
             </div>
             <div className="flex flex-wrap gap-2 text-xs">
-              {["VISA", "Mastercard", "PayPal", "iDEAL", "Sofort", "GiroPay", "Apple Pay", "Google Pay", "Amex", "Crypto"].map((p) => (
+              {["PayPal", "Crypto", isGerman ? "Banküberweisung" : "Bank Transfer"].map((p) => (
                 <span
                   key={p}
                   className="px-2.5 py-1 rounded-md bg-surface-2 border border-border text-muted-foreground"

@@ -7,7 +7,6 @@ const nav = [
   { en: "Pricing", de: "Preise", to: "/pricing" },
   { en: "Tutorials", de: "Tutorials", to: "/tutorials" },
   { en: "Referral", de: "Empfehlung", to: "/referral" },
-  { en: "Reseller", de: "Reseller", to: "/reseller" },
   { en: "FAQ", de: "FAQ", to: "/faq" },
   { en: "Contact", de: "Kontakt", to: "/contact" },
 ] as const;

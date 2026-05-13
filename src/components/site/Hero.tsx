@@ -1,7 +1,7 @@
 import { Check, Tv, Trophy } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useLanguage } from "@/lib/language";
-import { whatsappUrl } from "@/lib/site-links";
+import { useOrderModal } from "@/lib/order-modal";
 
 export function Hero() {
   const { language } = useLanguage();
