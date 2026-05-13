@@ -2,7 +2,7 @@ import { Trophy, Clapperboard, Newspaper, Film, ListVideo, Baby, BookOpen } from
 import { Link } from "@tanstack/react-router";
 import { useLanguage } from "@/lib/language";
 
-const cats = [
+const catsEN = [
   { i: Trophy, n: "Sports", c: "3,500+", d: "channels included" },
   { i: Clapperboard, n: "Entertainment", c: "5,000+", d: "channels included" },
   { i: Newspaper, n: "News", c: "1,200+", d: "channels included" },
@@ -10,6 +10,16 @@ const cats = [
   { i: ListVideo, n: "Series", c: "40,000+", d: "titles included" },
   { i: Baby, n: "Kids", c: "800+", d: "channels included" },
   { i: BookOpen, n: "Documentaries", c: "1,500+", d: "titles included" },
+];
+
+const catsDE = [
+  { i: Trophy, n: "Sport", c: "3.500+", d: "Sender enthalten" },
+  { i: Clapperboard, n: "Unterhaltung", c: "5.000+", d: "Sender enthalten" },
+  { i: Newspaper, n: "Nachrichten", c: "1.200+", d: "Sender enthalten" },
+  { i: Film, n: "Filme", c: "140.000+", d: "Titel enthalten" },
+  { i: ListVideo, n: "Serien", c: "40.000+", d: "Titel enthalten" },
+  { i: Baby, n: "Kinder", c: "800+", d: "Sender enthalten" },
+  { i: BookOpen, n: "Dokumentationen", c: "1.500+", d: "Titel enthalten" },
 ];
 
 export function Channels() {
@@ -31,7 +41,7 @@ export function Channels() {
       </div>
 
       <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-        {cats.map((c) => (
+        {(isGerman ? catsDE : catsEN).map((c) => (
           <div
             key={c.n}
             className="relative rounded-xl border border-border bg-surface/50 p-5 hover:border-primary/40 transition group overflow-hidden"

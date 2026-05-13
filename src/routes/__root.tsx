@@ -10,6 +10,7 @@ import {
 
 import appCss from "../styles.css?url";
 import { LanguageProvider } from "@/lib/language";
+import { OrderModalProvider } from "@/lib/order-modal";
 
 function NotFoundComponent() {
   return (
@@ -115,7 +116,9 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
-        <Outlet />
+        <OrderModalProvider>
+          <Outlet />
+        </OrderModalProvider>
       </LanguageProvider>
     </QueryClientProvider>
   );

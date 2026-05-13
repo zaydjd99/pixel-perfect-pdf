@@ -1,6 +1,6 @@
 import { Check, Smartphone, Monitor } from "lucide-react";
 import { useLanguage } from "@/lib/language";
-import { whatsappUrl } from "@/lib/site-links";
+import { useOrderModal } from "@/lib/order-modal";
 
 const single = [
   { name: "1 Month", price: "€15", per: "/ month", sub: "" },
@@ -21,6 +21,7 @@ function Plan({ p }: { p: (typeof single)[number] }) {
   const isBest = !!p.best;
   const { language } = useLanguage();
   const isGerman = language === "de";
+  const { open } = useOrderModal();
   return (
     <div
       className={`relative rounded-2xl border p-6 bg-surface/50 ${
@@ -47,10 +48,9 @@ function Plan({ p }: { p: (typeof single)[number] }) {
         ))}
       </ul>
       <div className="text-xs text-muted-foreground mt-3">▾ {isGerman ? "3 weitere Funktionen anzeigen" : "Show 3 more features"}</div>
-      <a
-        href={whatsappUrl}
-        target="_blank"
-        rel="noreferrer"
+      <button
+        type="button"
+        onClick={() => open(`${p.name} — ${p.price}`)}
         className={`mt-5 w-full py-2.5 rounded-md font-medium ${
           isBest
             ? "bg-gradient-primary text-primary-foreground"
@@ -58,7 +58,7 @@ function Plan({ p }: { p: (typeof single)[number] }) {
         } inline-flex items-center justify-center`}
       >
         {isGerman ? "Jetzt kaufen" : "Buy Now"}
-      </a>
+      </button>
       <div className="text-xs text-center text-muted-foreground mt-3">⚡ {isGerman ? "Sofortaktivierung" : "Instant activation"}</div>
     </div>
   );
@@ -67,6 +67,7 @@ function Plan({ p }: { p: (typeof single)[number] }) {
 export function Pricing() {
   const { language } = useLanguage();
   const isGerman = language === "de";
+  const { open } = useOrderModal();
   const translatedFeatures = isGerman ? ["20.000+ internationale Sender (HD / FHD / 4K & UHD)", "Tausende Filme & Serien (FHD, 4K & HDR)", "Catch-Up TV auf den meisten Sendern"] : features;
 
   return (
@@ -80,7 +81,7 @@ export function Pricing() {
         </h2>
         <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
           {isGerman ? "Noch nicht bereit? Du kannst vor dem Kauf einen " : "Not ready to commit yet? You can request a "}
-          <a href={whatsappUrl} target="_blank" rel="noreferrer" className="text-primary underline decoration-dotted">{isGerman ? "kostenlosen 1-Tages-Test" : "free 1-day trial"}</a>
+          <button type="button" onClick={() => open(isGerman ? "Kostenloser Test" : "Free Trial")} className="text-primary underline decoration-dotted">{isGerman ? "kostenlosen 1-Tages-Test" : "free 1-day trial"}</button>
           {isGerman ? " anfordern — keine Zahlung nötig." : " before buying any plan — no payment needed."}
         </p>
         <p className="mt-3 text-xs text-muted-foreground">
@@ -134,10 +135,9 @@ export function Pricing() {
                 ))}
               </ul>
               <div className="text-xs text-muted-foreground mt-3">▾ {isGerman ? "4 weitere Funktionen anzeigen" : "Show 4 more features"}</div>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noreferrer"
+              <button
+                type="button"
+                onClick={() => open(`${p.name} — ${p.price}/year`)}
                 className={`mt-5 w-full py-2.5 rounded-md font-medium ${
                   p.reco
                     ? "bg-gradient-primary text-primary-foreground"
@@ -145,7 +145,7 @@ export function Pricing() {
                 } inline-flex items-center justify-center`}
               >
                 {isGerman ? "Jetzt kaufen" : "Buy Now"}
-              </a>
+              </button>
               <div className="text-xs text-center text-muted-foreground mt-3">
                 ⚡ {isGerman ? "Sofortaktivierung" : "Instant activation"}
               </div>

@@ -1,23 +1,34 @@
 import { Star } from "lucide-react";
+import { useLanguage } from "@/lib/language";
 
-const reviews = [
-  { n: "Sarah J.", l: "Switched from Sky", t: "I cancelled Netflix and Sky because NEXASTREAM has everything in one place. Massive VOD library, perfect stream quality. Best purchase in a long time!" },
-  { n: "Marco D.", l: "Football fan", t: "All Champions League matches in 4K with zero buffering. The integrated VPN is a brilliant touch. Highly recommend." },
-  { n: "Lena K.", l: "Family of 4", t: "Set it up on the kids' tablets, my Smart TV and my partner's phone in under 10 minutes. Support replied within minutes." },
+const reviewsEN = [
+  { n: "Lukas Müller", l: "Switched from Sky", t: "I cancelled Netflix and Sky because NEXASTREAM has everything in one place. Massive VOD library, perfect stream quality. Best purchase in a long time!" },
+  { n: "Sophie Schmidt", l: "Football fan", t: "All Champions League matches in 4K with zero buffering. The integrated VPN is a brilliant touch. Highly recommend." },
+  { n: "Felix Wagner", l: "Family of 4", t: "Set it up on the kids' tablets, my Smart TV and my partner's phone in under 10 minutes. Support replied within minutes." },
+];
+
+const reviewsDE = [
+  { n: "Lukas Müller", l: "Von Sky gewechselt", t: "Ich habe Netflix und Sky gekündigt, weil NEXASTREAM alles an einem Ort bietet. Riesige VOD-Bibliothek, perfekte Streamqualität. Bester Kauf seit langem!" },
+  { n: "Sophie Schmidt", l: "Fußball-Fan", t: "Alle Champions-League-Spiele in 4K ohne Buffering. Das integrierte VPN ist ein genialer Bonus. Sehr empfehlenswert." },
+  { n: "Felix Wagner", l: "Familie mit 4", t: "In unter 10 Minuten auf den Tablets der Kinder, meinem Smart-TV und dem Handy meines Partners eingerichtet. Support antwortete in Minuten." },
 ];
 
 export function Reviews() {
+  const { language } = useLanguage();
+  const isGerman = language === "de";
+  const reviews = isGerman ? reviewsDE : reviewsEN;
+
   return (
     <section className="mx-auto max-w-7xl px-6 py-20">
       <div className="text-center">
         <span className="inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary">
-          Customer Reviews
+          {isGerman ? "Kundenbewertungen" : "Customer Reviews"}
         </span>
         <h2 className="mt-4 text-3xl sm:text-4xl font-bold">
-          Loved by <span className="text-gradient-green">customers</span>
+          {isGerman ? "Geliebt von " : "Loved by "}<span className="text-gradient-green">{isGerman ? "Kunden" : "customers"}</span>
         </h2>
         <p className="mt-4 text-muted-foreground">
-          See for yourself — here's what our customers say about NEXASTREAM.
+          {isGerman ? "Überzeuge dich selbst — das sagen unsere Kunden über NEXASTREAM." : "See for yourself — here's what our customers say about NEXASTREAM."}
         </p>
       </div>
 
@@ -50,7 +61,7 @@ export function Reviews() {
           ))}
         </div>
         <span className="text-primary font-semibold">★ Trustpilot</span>
-        <span>· Rated 4.8 of 5 on Trustpilot</span>
+        <span>· {isGerman ? "Bewertet 4,8 von 5 auf Trustpilot" : "Rated 4.8 of 5 on Trustpilot"}</span>
       </div>
     </section>
   );

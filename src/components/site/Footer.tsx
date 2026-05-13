@@ -6,7 +6,7 @@ export function Footer() {
   const { language } = useLanguage();
   const isGerman = language === "de";
   const cols = [
-    { h: isGerman ? "Entdecken" : "Explore", l: [{ label: isGerman ? "Preise" : "Pricing", to: "/pricing" }, { label: "Reseller", to: "/reseller" }] },
+    { h: isGerman ? "Entdecken" : "Explore", l: [{ label: isGerman ? "Preise" : "Pricing", to: "/pricing" }, { label: isGerman ? "Empfehlung" : "Referral", to: "/referral" }] },
     { h: isGerman ? "Hilfe" : "Help", l: [{ label: "Tutorials", to: "/tutorials" }, { label: "FAQs", to: "/faq" }, { label: isGerman ? "Kontakt" : "Contact", to: "/contact" }] },
     { h: isGerman ? "Rechtliches" : "Legal", l: [{ label: isGerman ? "Datenschutz" : "Privacy Policy", to: "/faq" }, { label: isGerman ? "Nutzungsbedingungen" : "Terms of Service", to: "/faq" }, { label: isGerman ? "Rückerstattung" : "Refund Policy", to: "/faq" }] },
   ] as const;
@@ -51,7 +51,7 @@ export function Footer() {
           <div>© 2018 NEXASTREAM. {isGerman ? "Alle Rechte vorbehalten." : "All rights reserved."}</div>
           <div className="flex flex-wrap gap-2">
             <span>{isGerman ? "Zahlungsmethoden" : "Payment methods"}:</span>
-            {["Visa", "Mastercard", "PayPal", "iDEAL", "Sofort", "GiroPay", "Crypto"].map((p) => (
+            {["PayPal", "Crypto", isGerman ? "Banküberweisung" : "Bank Transfer"].map((p) => (
               <span key={p} className="px-2 py-0.5 rounded bg-surface-2 border border-border">
                 {p}
               </span>
