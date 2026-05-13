@@ -6,6 +6,7 @@ import { useOrderModal } from "@/lib/order-modal";
 export function Hero() {
   const { language } = useLanguage();
   const isGerman = language === "de";
+  const { open } = useOrderModal();
 
   return (
     <section className="relative overflow-hidden">
@@ -34,9 +35,9 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href={whatsappUrl} target="_blank" rel="noreferrer" className="px-5 py-3 rounded-full bg-gradient-primary text-primary-foreground font-medium shadow-glow hover:opacity-90 transition">
+            <button type="button" onClick={() => open(isGerman ? "Kostenlose Testversion" : "Free Trial")} className="px-5 py-3 rounded-full bg-gradient-primary text-primary-foreground font-medium shadow-glow hover:opacity-90 transition">
               {isGerman ? "Kostenlos testen" : "Start Free Trial"}
-            </a>
+            </button>
             <Link to="/pricing" className="px-5 py-3 rounded-full border border-border bg-surface/60 text-foreground hover:bg-surface transition">
               {isGerman ? "Pläne ansehen" : "See Plans & Pricing"}
             </Link>
@@ -89,9 +90,9 @@ export function Hero() {
               <span className="text-foreground">{isGerman ? "Klicke auf Abo verlängern." : "Click the Extend Subscription button."}</span>
             </div>
           </div>
-          <Link to="/pricing" className="px-4 py-2 rounded-md bg-gradient-primary text-primary-foreground text-sm font-medium">
+          <button type="button" onClick={() => open(isGerman ? "Abo verlängern" : "Extend Subscription")} className="px-4 py-2 rounded-md bg-gradient-primary text-primary-foreground text-sm font-medium">
             {isGerman ? "Abo verlängern" : "Extend Subscription"}
-          </Link>
+          </button>
         </div>
       </div>
 
