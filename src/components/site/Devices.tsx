@@ -3,12 +3,20 @@ import { Link } from "@tanstack/react-router";
 import { useLanguage } from "@/lib/language";
 import { telegramUrl, whatsappUrl } from "@/lib/site-links";
 
-const devices = [
+const devicesEN = [
   { i: Tv, n: "Smart TV", d: "Samsung · LG · Sony" },
   { i: Smartphone, n: "Smartphone & Tablet", d: "Android · iOS" },
   { i: Monitor, n: "PC / Mac", d: "Windows · macOS" },
   { i: Cast, n: "Streaming Box", d: "Firestick · Chromecast" },
   { i: Box, n: "IPTV Box", d: "MAG · Formuler" },
+];
+
+const devicesDE = [
+  { i: Tv, n: "Smart-TV", d: "Samsung · LG · Sony" },
+  { i: Smartphone, n: "Smartphone & Tablet", d: "Android · iOS" },
+  { i: Monitor, n: "PC / Mac", d: "Windows · macOS" },
+  { i: Cast, n: "Streaming-Box", d: "Firestick · Chromecast" },
+  { i: Box, n: "IPTV-Box", d: "MAG · Formuler" },
 ];
 
 export function Devices() {
