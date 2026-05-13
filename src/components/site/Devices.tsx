@@ -38,7 +38,7 @@ export function Devices() {
       </div>
 
       <div className="mt-10 grid grid-cols-2 md:grid-cols-5 gap-4">
-        {devices.map((d) => (
+        {(isGerman ? devicesDE : devicesEN).map((d) => (
           <div
             key={d.n}
             className="rounded-xl border border-border bg-surface/50 p-5 hover:border-primary/40 transition"

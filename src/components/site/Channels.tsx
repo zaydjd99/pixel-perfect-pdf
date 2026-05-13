@@ -41,7 +41,7 @@ export function Channels() {
       </div>
 
       <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-        {cats.map((c) => (
+        {(isGerman ? catsDE : catsEN).map((c) => (
           <div
             key={c.n}
             className="relative rounded-xl border border-border bg-surface/50 p-5 hover:border-primary/40 transition group overflow-hidden"
