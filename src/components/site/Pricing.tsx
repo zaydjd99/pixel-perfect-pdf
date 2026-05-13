@@ -1,6 +1,6 @@
 import { Check, Smartphone, Monitor } from "lucide-react";
 import { useLanguage } from "@/lib/language";
-import { whatsappUrl } from "@/lib/site-links";
+import { useOrderModal } from "@/lib/order-modal";
 
 const single = [
   { name: "1 Month", price: "€15", per: "/ month", sub: "" },
