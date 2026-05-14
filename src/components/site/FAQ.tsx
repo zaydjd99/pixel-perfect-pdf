@@ -6,7 +6,7 @@ import { useLanguage } from "@/lib/language";
 const items = [
   ["Does one account support multiple devices?", "By default each subscription supports 1 device. Multi-device plans are available for 2, 3 or 4 simultaneous connections."],
   ["Do you offer a free trial?", "Yes — request a free 1-day trial before purchasing any plan, no payment details needed."],
-  ["Which payment methods are available?", "We accept Visa, Mastercard, PayPal, iDEAL, Sofort, GiroPay, Apple Pay, Google Pay and crypto."],
+  ["Which payment methods are available?", "We accept PayPal, Bank Transfer and Crypto."],
   ["How long does delivery take?", "Activation is instant after payment confirmation — usually within a few seconds."],
   ["What countries are included?", "Channels from across Europe and the world: UK, Germany, France, Italy, Spain, Netherlands, USA, and many more."],
   ["Will my subscription renew automatically?", "No, all subscriptions are one-time payments. You renew manually whenever you choose."],
@@ -23,7 +23,7 @@ export function FAQ() {
     ? [
         ["Kann ich ein Konto auf mehreren Geräten verwenden?", "Standardmäßig unterstützt jedes Abonnement 1 Gerät. Multi-Device-Pläne sind für 2, 3 oder 4 gleichzeitige Verbindungen verfügbar."],
         ["Bietet ihr eine kostenlose Testversion an?", "Ja — fordere vor dem Kauf einen kostenlosen 1-Tages-Test an, ohne Zahlungsdaten."],
-        ["Welche Zahlungsmethoden sind verfügbar?", "Wir akzeptieren Visa, Mastercard, PayPal, iDEAL, Sofort, GiroPay, Apple Pay, Google Pay und Krypto."],
+        ["Welche Zahlungsmethoden sind verfügbar?", "Wir akzeptieren PayPal, Banküberweisung und Krypto."],
         ["Wie lange dauert die Lieferung?", "Die Aktivierung erfolgt sofort nach Zahlungsbestätigung — normalerweise in wenigen Sekunden."],
         ["Welche Länder sind enthalten?", "Sender aus Europa und weltweit: UK, Deutschland, Frankreich, Italien, Spanien, Niederlande, USA und viele mehr."],
         ["Verlängert sich mein Abonnement automatisch?", "Nein, alle Abonnements sind Einmalzahlungen. Du verlängerst manuell, wann du möchtest."],

@@ -1,7 +1,8 @@
-import { Check, Tv, Trophy } from "lucide-react";
+import { Check } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useLanguage } from "@/lib/language";
 import { useOrderModal } from "@/lib/order-modal";
+import heroTv from "@/assets/hero-tv.png";
 
 export function Hero() {
   const { language } = useLanguage();
@@ -58,23 +59,18 @@ export function Hero() {
         </div>
 
         <div className="relative">
-          <div className="relative rounded-2xl overflow-hidden border border-border/60 bg-surface shadow-glow">
-            <div className="aspect-[16/10] grid grid-cols-3 gap-1 p-1 bg-background">
-              {Array.from({ length: 9 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="rounded-md bg-gradient-to-br from-surface-2 to-surface-3 grid place-items-center text-xs text-muted-foreground/60"
-                >
-                  CH {i + 1}
-                </div>
-              ))}
-            </div>
+          <img
+            src={heroTv}
+            alt={isGerman ? "Smart-TV mit Streaming-Apps und Fire TV Stick Fernbedienung" : "Smart TV with streaming apps and Fire TV Stick remote"}
+            width={1280}
+            height={896}
+            className="w-full h-auto drop-shadow-[0_30px_60px_oklch(0.78_0.18_152/0.25)]"
+          />
+          <div className="absolute bottom-6 left-2 flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface/90 backdrop-blur border border-border text-xs">
+            <span className="text-primary font-semibold">4K</span> Ultra HD
           </div>
-          <div className="absolute -bottom-4 left-6 flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface border border-border text-xs">
-            <Tv className="w-3.5 h-3.5 text-primary" /> 4K Ultra HD
-          </div>
-          <div className="absolute -bottom-4 right-6 flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface border border-border text-xs">
-            <Trophy className="w-3.5 h-3.5 text-primary" /> Live Sports
+          <div className="absolute bottom-6 right-2 flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface/90 backdrop-blur border border-border text-xs">
+            <span className="w-2 h-2 rounded-full bg-destructive animate-pulse" /> Live Sports
           </div>
         </div>
       </div>

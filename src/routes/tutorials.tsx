@@ -2,9 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { CTA } from "@/components/site/CTA";
-import { Send, MessageCircle, ArrowRight, Tv, Smartphone, Apple, Monitor, Cast, Box } from "lucide-react";
+import { Send, MessageCircle, ArrowRight } from "lucide-react";
 import { telegramUrl, whatsappUrl } from "@/lib/site-links";
 import { useLanguage } from "@/lib/language";
+import { tutorials } from "@/lib/tutorials";
 
 export const Route = createFileRoute("/tutorials")({
   component: TutorialsPage,
@@ -17,17 +18,6 @@ export const Route = createFileRoute("/tutorials")({
     ],
   }),
 });
-
-const devices = [
-  { name: "Fire TV", icon: Cast },
-  { name: "Android", icon: Smartphone },
-  { name: "Apple iOS", icon: Apple },
-  { name: "Windows", icon: Monitor },
-  { name: "Roku TV", icon: Tv },
-  { name: "LG TV", icon: Tv },
-  { name: "MAG / STB", icon: Box },
-  { name: "Samsung TV", icon: Tv },
-];
 
 function TutorialsPage() {
   const { language } = useLanguage();
@@ -60,17 +50,26 @@ function TutorialsPage() {
               {isGerman ? "Wähle dein Gerät" : "Select your device"}
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-              {devices.map((d) => (
+              {tutorials.map((d) => (
                 <div
-                  key={d.name}
+                  key={d.slug}
                   className="rounded-2xl border border-border bg-surface/50 p-6 hover:border-primary/40 transition group"
                 >
-                  <div className="aspect-[4/3] rounded-xl bg-surface-2 grid place-items-center mb-4">
-                    <d.icon className="w-12 h-12 text-primary" />
+                  <div className="aspect-[4/3] rounded-xl bg-surface-2 grid place-items-center mb-4 overflow-hidden">
+                    <img
+                      src={d.image}
+                      alt={d.name}
+                      loading="lazy"
+                      className="w-full h-full object-contain p-3"
+                    />
                   </div>
-                  <div className="font-semibold mb-3">{d.name}</div>
-                  <Link to="/contact" className="w-full inline-flex items-center justify-center gap-2 text-xs uppercase tracking-wider px-3 py-2 rounded-md border border-border bg-surface-2/60 text-muted-foreground group-hover:text-primary group-hover:border-primary/40 transition">
-                    {isGerman ? "Setup-Hilfe" : "Setup Guide"} <ArrowRight className="w-3.5 h-3.5" />
+                  <div className="font-semibold mb-3 text-sm">{d.name.split(" · ")[0].split(" / ")[0]}</div>
+                  <Link
+                    to="/tutorials/$device"
+                    params={{ device: d.slug }}
+                    className="w-full inline-flex items-center justify-center gap-2 text-xs uppercase tracking-wider px-3 py-2 rounded-md border border-border bg-surface-2/60 text-muted-foreground group-hover:text-primary group-hover:border-primary/40 transition"
+                  >
+                    {isGerman ? "Setup-Anleitung" : "Setup Guide"} <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               ))}
