@@ -5,7 +5,7 @@ import { CTA } from "@/components/site/CTA";
 import { ArrowLeft, Check, Send, MessageCircle, ExternalLink } from "lucide-react";
 import { telegramUrl, whatsappUrl } from "@/lib/site-links";
 import { useLanguage } from "@/lib/language";
-import { getTutorial } from "@/lib/tutorials";
+import { getTutorial, type Tutorial } from "@/lib/tutorials";
 
 export const Route = createFileRoute("/tutorials/$device")({
   component: TutorialDetail,
@@ -36,7 +36,7 @@ export const Route = createFileRoute("/tutorials/$device")({
 });
 
 function TutorialDetail() {
-  const { tutorial } = Route.useLoaderData();
+  const { tutorial } = Route.useLoaderData() as { tutorial: Tutorial };
   const { language } = useLanguage();
   const isGerman = language === "de";
   const methods = isGerman ? tutorial.methodsDe : tutorial.methods;
