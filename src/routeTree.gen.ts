@@ -15,6 +15,7 @@ import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TutorialsDeviceRouteImport } from './routes/tutorials.$device'
 
 const TutorialsRoute = TutorialsRouteImport.update({
   id: '/tutorials',
@@ -46,6 +47,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TutorialsDeviceRoute = TutorialsDeviceRouteImport.update({
+  id: '/$device',
+  path: '/$device',
+  getParentRoute: () => TutorialsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -53,7 +59,8 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/pricing': typeof PricingRoute
   '/referral': typeof ReferralRoute
-  '/tutorials': typeof TutorialsRoute
+  '/tutorials': typeof TutorialsRouteWithChildren
+  '/tutorials/$device': typeof TutorialsDeviceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -61,7 +68,8 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/pricing': typeof PricingRoute
   '/referral': typeof ReferralRoute
-  '/tutorials': typeof TutorialsRoute
+  '/tutorials': typeof TutorialsRouteWithChildren
+  '/tutorials/$device': typeof TutorialsDeviceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -70,13 +78,28 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/pricing': typeof PricingRoute
   '/referral': typeof ReferralRoute
-  '/tutorials': typeof TutorialsRoute
+  '/tutorials': typeof TutorialsRouteWithChildren
+  '/tutorials/$device': typeof TutorialsDeviceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contact' | '/faq' | '/pricing' | '/referral' | '/tutorials'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/faq'
+    | '/pricing'
+    | '/referral'
+    | '/tutorials'
+    | '/tutorials/$device'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/faq' | '/pricing' | '/referral' | '/tutorials'
+  to:
+    | '/'
+    | '/contact'
+    | '/faq'
+    | '/pricing'
+    | '/referral'
+    | '/tutorials'
+    | '/tutorials/$device'
   id:
     | '__root__'
     | '/'
@@ -85,6 +108,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/referral'
     | '/tutorials'
+    | '/tutorials/$device'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -93,7 +117,7 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   PricingRoute: typeof PricingRoute
   ReferralRoute: typeof ReferralRoute
-  TutorialsRoute: typeof TutorialsRoute
+  TutorialsRoute: typeof TutorialsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -140,8 +164,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tutorials/$device': {
+      id: '/tutorials/$device'
+      path: '/$device'
+      fullPath: '/tutorials/$device'
+      preLoaderRoute: typeof TutorialsDeviceRouteImport
+      parentRoute: typeof TutorialsRoute
+    }
   }
 }
+
+interface TutorialsRouteChildren {
+  TutorialsDeviceRoute: typeof TutorialsDeviceRoute
+}
+
+const TutorialsRouteChildren: TutorialsRouteChildren = {
+  TutorialsDeviceRoute: TutorialsDeviceRoute,
+}
+
+const TutorialsRouteWithChildren = TutorialsRoute._addFileChildren(
+  TutorialsRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -149,8 +192,18 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   PricingRoute: PricingRoute,
   ReferralRoute: ReferralRoute,
-  TutorialsRoute: TutorialsRoute,
+  TutorialsRoute: TutorialsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
