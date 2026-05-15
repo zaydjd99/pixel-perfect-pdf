@@ -3,30 +3,22 @@ import { useState } from "react";
 import { useLanguage } from "@/lib/language";
 
 const posters = [
-  "01313a8afee0e5d0bf29f8a654a1a8ea.webp",
-  "10d1f43206bddd0c6ff215b41863efc3.webp",
-  "4-1-1.webp",
-  "551196002d621d1281d1350100dda067.webp",
-  "5DM2wMt9nZUDnbE0zuGt2joigYd.webp",
-  "6-min-1.webp",
-  "7-1-1.webp",
-  "9b7fc8e686026c8394e0be396e055078.webp",
-  "9bc9500f2924843409a2eab9d158366d.webp",
-  "a-man-called-otto.webp",
-  "a89pLcZGLZVwM8KTIs0BWprnMHt.webp",
-  "f04b7cee0e021e7d60eb64543f87f9c2.webp",
-  "fG639Twc2QOYmrAVx3Onj864YHW.webp",
-  "magic-mikes.webp",
-  "movie-05.webp",
-  "movie-poster-1.webp",
-  "movie-poster-2.webp",
-  "movie-poster-3.webp",
-  "pkDiSsxBOfNz4IO3LqmztgM8xOe.webp",
-  "tinywow_Film_1_15266411-1.webp",
-  "tinywow_Film_2_15266479.webp",
-  "tokyno-gfx-blachowicz-adesyana.webp",
-  "ymMaqwKN3Ovy9nlIRmk5GsnxEkx.webp",
-  "zCZJXSDPZKGml4I5zvxNpdx8jra.webp",
+  // Slide 1 — featured (matches reference screenshot)
+  "01313a8afee0e5d0bf29f8a654a1a8ea.webp", // Ghostbusters
+  "10d1f43206bddd0c6ff215b41863efc3.webp", // Task
+  "4-1-1.webp",                              // Hidden Figures
+  "5DM2wMt9nZUDnbE0zuGt2joigYd.webp",       // Furiosa
+  "7-1-1.webp",                              // Deadpool & Wolverine
+  // Slide 2
+  "9b7fc8e686026c8394e0be396e055078.webp", // Kingdom of the Planet of the Apes
+  "fG639Twc2QOYmrAVx3Onj864YHW.webp",       // One Piece
+  "a89pLcZGLZVwM8KTIs0BWprnMHt.webp",       // Alien Romulus
+  "6-min-1.webp",                            // Medieval
+  "f04b7cee0e021e7d60eb64543f87f9c2.webp", // Scream
+  // Slide 3
+  "9bc9500f2924843409a2eab9d158366d.webp", // Ellis
+  "a-man-called-otto.webp",                  // A Man Called Otto
+  "551196002d621d1281d1350100dda067.webp", // O Lado Bom de Ser Traída
 ];
 
 const PER_SLIDE = 5;
