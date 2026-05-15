@@ -2,6 +2,7 @@ import { Tv, Smartphone, Monitor, Cast, Box } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useLanguage } from "@/lib/language";
 import { telegramUrl, whatsappUrl } from "@/lib/site-links";
+import { TelegramIcon, WhatsAppIcon } from "@/lib/order-modal";
 
 const devicesEN = [
   { i: Tv, n: "Smart TV", d: "Samsung · LG · Sony" },
@@ -76,11 +77,11 @@ export function Devices() {
           </div>
         </div>
         <div className="flex gap-2">
-          <a href={whatsappUrl} target="_blank" rel="noreferrer" className="text-sm font-medium px-4 py-2 rounded-md bg-whatsapp text-contact-foreground hover:opacity-90 transition">
-            WhatsApp
+          <a href={whatsappUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-md bg-whatsapp text-contact-foreground hover:opacity-90 transition">
+            <WhatsAppIcon className="w-4 h-4" /> WhatsApp
           </a>
-          <a href={telegramUrl} target="_blank" rel="noreferrer" className="text-sm font-medium px-4 py-2 rounded-md bg-telegram text-contact-foreground hover:opacity-90 transition">
-            Telegram
+          <a href={telegramUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-md bg-telegram text-contact-foreground hover:opacity-90 transition">
+            <TelegramIcon className="w-4 h-4" /> Telegram
           </a>
         </div>
       </div>
