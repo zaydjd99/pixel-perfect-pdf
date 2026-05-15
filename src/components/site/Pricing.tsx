@@ -73,8 +73,12 @@ function Plan({ p, isGerman }: { p: (typeof single)[number]; isGerman: boolean }
       </div>
       {p.sub && (
         isBest ? (
-          <div className="mt-2 inline-block">
-            <span className="relative inline-flex px-3 py-1 text-xs font-semibold text-primary before:absolute before:-inset-x-2 before:-inset-y-1.5 before:rotate-[-5deg] before:rounded-[999px/70px] before:border-2 before:border-destructive/80 before:content-[''] after:absolute after:-inset-x-1.5 after:-inset-y-1 after:rotate-[3deg] after:rounded-[999px/70px] after:border after:border-destructive/45 after:content-['']">
+          <div className="relative mt-3 inline-flex px-5 py-2">
+            <svg className="pointer-events-none absolute inset-0 h-full w-full overflow-visible" viewBox="0 0 132 32" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M4 18 C10 5, 114 1, 128 12 C138 22, 113 31, 48 29 C14 28, -3 25, 4 18 Z" fill="none" stroke="currentColor" strokeWidth="2.2" className="text-destructive" />
+              <path d="M8 20 C22 8, 104 4, 124 14 C130 20, 115 27, 61 28 C25 28, 4 25, 8 20 Z" fill="none" stroke="currentColor" strokeWidth="1.2" className="text-destructive/60" />
+            </svg>
+            <span className="relative z-10 text-xs font-semibold text-primary">
               {p.sub}
             </span>
           </div>
