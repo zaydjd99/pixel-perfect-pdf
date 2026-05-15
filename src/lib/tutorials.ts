@@ -228,8 +228,8 @@ export const tutorials: Tutorial[] = [
     introDe: "Nutze Smart IPTV oder SS IPTV auf LG-WebOS-Fernsehern.",
     needs: needsBase("en", "LG WebOS TV"),
     needsDe: needsBase("de", "LG-WebOS-TV"),
-    methods: [{ name: "Smart IPTV", tag: "Freemium", steps: hotPlayerSteps("en") }],
-    methodsDe: [{ name: "Smart IPTV", tag: "Freemium", steps: hotPlayerSteps("de") }],
+    methods: [{ name: "Smart IPTV / IBO Player Pro", tag: "Freemium", steps: smartTvSteps("en", "LG") }],
+    methodsDe: [{ name: "Smart IPTV / IBO Player Pro", tag: "Freemium", steps: smartTvSteps("de", "LG") }],
   },
   {
     slug: "samsung-tv",
@@ -241,8 +241,8 @@ export const tutorials: Tutorial[] = [
     introDe: "Nutze Smart IPTV auf Samsung-Tizen-Fernsehern.",
     needs: needsBase("en", "Samsung Tizen TV"),
     needsDe: needsBase("de", "Samsung-Tizen-TV"),
-    methods: [{ name: "Smart IPTV", tag: "Freemium", steps: hotPlayerSteps("en") }],
-    methodsDe: [{ name: "Smart IPTV", tag: "Freemium", steps: hotPlayerSteps("de") }],
+    methods: [{ name: "Smart IPTV / IBO Player Pro", tag: "Freemium", steps: smartTvSteps("en", "Samsung") }],
+    methodsDe: [{ name: "Smart IPTV / IBO Player Pro", tag: "Freemium", steps: smartTvSteps("de", "Samsung") }],
   },
   {
     slug: "mag-stb",
