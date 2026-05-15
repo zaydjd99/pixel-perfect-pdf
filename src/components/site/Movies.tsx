@@ -64,11 +64,11 @@ export function Movies() {
           >
             {slides.map((slide, si) => (
               <div key={si} className="shrink-0" style={{ width: `${100 / total}%` }}>
-                <div className="grid grid-cols-3 gap-2 md:grid-cols-4 xl:grid-cols-5">
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5 md:gap-4">
                   {slide.map((file, pi) => (
                     <article
                       key={file}
-                      className={`group relative aspect-[0.7] overflow-hidden rounded-xl border border-border bg-surface-2 shadow-[0_12px_40px_rgba(0,0,0,0.3)] ${pi >= 3 ? "hidden md:block" : ""} ${pi >= 4 ? "hidden xl:block" : ""}`}
+                      className={`group relative aspect-[0.7] overflow-hidden rounded-xl border border-border bg-surface-2 shadow-[0_12px_40px_rgba(0,0,0,0.3)] ${pi >= 4 ? "hidden sm:block" : ""}`}
                     >
                       <img
                         src={`/movie-posters/${file}`}
