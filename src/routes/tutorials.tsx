@@ -1,4 +1,4 @@
-import { createFileRoute, Link, Outlet, useMatchRoute } from "@tanstack/react-router";
+import { createFileRoute, Link, Outlet, useLocation } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { CTA } from "@/components/site/CTA";
@@ -23,8 +23,8 @@ export const Route = createFileRoute("/tutorials")({
 function TutorialsPage() {
   const { language } = useLanguage();
   const isGerman = language === "de";
-  const matchRoute = useMatchRoute();
-  const isDetailPage = !!matchRoute({ to: "/tutorials/$device", fuzzy: false });
+  const location = useLocation();
+  const isDetailPage = location.pathname !== "/tutorials";
 
   if (isDetailPage) {
     return <Outlet />;
