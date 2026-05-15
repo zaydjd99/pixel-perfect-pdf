@@ -98,6 +98,23 @@ const smartersIosSteps = (t: "en" | "de"): TutorialStep[] =>
         { title: "Add User antippen", body: '„Add User" antippen — Sender und VOD laden innerhalb weniger Sekunden.' },
       ];
 
+const smartTvSteps = (t: "en" | "de", brand: "Samsung" | "LG"): TutorialStep[] =>
+  t === "en"
+    ? [
+        { title: `Install Smart IPTV on ${brand} TV`, body: `Open the ${brand} app store, search for Smart IPTV or IBO Player Pro, then install it.` },
+        { title: "Open the app", body: "Launch the app and write down the MAC address and device key shown on the screen." },
+        { title: "Send us your details", body: "Send the MAC address/device key to NexaStream support by WhatsApp or Telegram." },
+        { title: "Playlist activation", body: "We add your playlist to the app using your subscription credentials." },
+        { title: "Restart and watch", body: "Restart the TV app. Live channels, movies and series will load automatically." },
+      ]
+    : [
+        { title: `Smart IPTV auf ${brand} TV installieren`, body: `Öffne den ${brand} App Store, suche Smart IPTV oder IBO Player Pro und installiere die App.` },
+        { title: "App öffnen", body: "Starte die App und notiere die MAC-Adresse sowie den Device Key auf dem Bildschirm." },
+        { title: "Daten an uns senden", body: "Sende MAC-Adresse/Device Key per WhatsApp oder Telegram an den NexaStream Support." },
+        { title: "Playlist-Aktivierung", body: "Wir fügen deine Playlist mit deinen Zugangsdaten in der App hinzu." },
+        { title: "Neu starten und schauen", body: "Starte die TV-App neu. Live-Sender, Filme und Serien laden automatisch." },
+      ];
+
 const needsBase = (t: "en" | "de", device: string) =>
   t === "en"
     ? [`${device} device`, "NexaStream subscription credentials", "Reliable internet connection"]
@@ -211,8 +228,8 @@ export const tutorials: Tutorial[] = [
     introDe: "Nutze Smart IPTV oder SS IPTV auf LG-WebOS-Fernsehern.",
     needs: needsBase("en", "LG WebOS TV"),
     needsDe: needsBase("de", "LG-WebOS-TV"),
-    methods: [{ name: "Smart IPTV", tag: "Freemium", steps: hotPlayerSteps("en") }],
-    methodsDe: [{ name: "Smart IPTV", tag: "Freemium", steps: hotPlayerSteps("de") }],
+    methods: [{ name: "Smart IPTV / IBO Player Pro", tag: "Freemium", steps: smartTvSteps("en", "LG") }],
+    methodsDe: [{ name: "Smart IPTV / IBO Player Pro", tag: "Freemium", steps: smartTvSteps("de", "LG") }],
   },
   {
     slug: "samsung-tv",
@@ -224,8 +241,8 @@ export const tutorials: Tutorial[] = [
     introDe: "Nutze Smart IPTV auf Samsung-Tizen-Fernsehern.",
     needs: needsBase("en", "Samsung Tizen TV"),
     needsDe: needsBase("de", "Samsung-Tizen-TV"),
-    methods: [{ name: "Smart IPTV", tag: "Freemium", steps: hotPlayerSteps("en") }],
-    methodsDe: [{ name: "Smart IPTV", tag: "Freemium", steps: hotPlayerSteps("de") }],
+    methods: [{ name: "Smart IPTV / IBO Player Pro", tag: "Freemium", steps: smartTvSteps("en", "Samsung") }],
+    methodsDe: [{ name: "Smart IPTV / IBO Player Pro", tag: "Freemium", steps: smartTvSteps("de", "Samsung") }],
   },
   {
     slug: "mag-stb",
