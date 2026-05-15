@@ -54,15 +54,6 @@ export function Reviews() {
         ))}
       </div>
 
-      <div className="mt-8 flex items-center justify-center gap-2 text-xs text-muted-foreground">
-        <div className="flex gap-0.5 text-primary">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <Star key={i} className="w-4 h-4 fill-current" />
-          ))}
-        </div>
-        <span className="text-primary font-semibold">★ Trustpilot</span>
-        <span>· {isGerman ? "Bewertet 4,8 von 5 auf Trustpilot" : "Rated 4.8 of 5 on Trustpilot"}</span>
-      </div>
     </section>
   );
 }

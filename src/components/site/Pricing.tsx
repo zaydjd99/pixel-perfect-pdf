@@ -1,4 +1,5 @@
-import { Check, Smartphone, Monitor } from "lucide-react";
+import { Check, Smartphone, Monitor, ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
 import { useLanguage } from "@/lib/language";
 import { useOrderModal } from "@/lib/order-modal";
 
@@ -10,18 +11,50 @@ const single = [
 ];
 
 const multi = [
-  { name: "2 Devices", price: "€120", per: "/year", sub: "≈ €5 / device / month", conn: "2 simultaneous connections" },
-  { name: "3 Devices", price: "€160", per: "/year", sub: "≈ €4.44 / device / month", conn: "3 simultaneous connections", reco: true },
-  { name: "4 Devices", price: "€200", per: "/year", sub: "≈ €4.17 / device / month", conn: "4 simultaneous connections" },
+  { name: "2 Devices", price: "€120", per: "/year", sub: "≈ €5 / device / month", conn: "2 simultaneous connections", extra: "+ 2 free app activations" },
+  { name: "3 Devices", price: "€160", per: "/year", sub: "≈ €4.44 / device / month", conn: "3 simultaneous connections", reco: true, extra: "+ 3 free app activations" },
+  { name: "4 Devices", price: "€200", per: "/year", sub: "≈ €4.17 / device / month", conn: "4 simultaneous connections", extra: "+ 4 free app activations" },
 ];
 
-const features = ["20,000+ international channels (HD / FHD / 4K & UHD)", "Thousands of movies & series (FHD, 4K & HDR)", "Catch-Up TV on most channels"];
+const featuresEN = [
+  "20,000+ international channels (HD / FHD / 4K & UHD)",
+  "Thousands of movies & series (FHD, 4K & HDR)",
+  "Catch-Up TV on most channels",
+  "EPG guide on most channels",
+  "Integrated VPN technology",
+  "Adults +18 — ON REQUEST",
+];
+const featuresDE = [
+  "20.000+ internationale Sender (HD / FHD / 4K & UHD)",
+  "Tausende Filme & Serien (FHD, 4K & HDR)",
+  "Catch-Up TV auf den meisten Sendern",
+  "EPG-Guide auf den meisten Sendern",
+  "Integrierte VPN-Technologie",
+  "Erwachsene +18 — AUF ANFRAGE",
+];
 
-function Plan({ p }: { p: (typeof single)[number] }) {
+function FeatureList({ items, expanded, visible }: { items: string[]; expanded: boolean; visible: number }) {
+  const list = expanded ? items : items.slice(0, visible);
+  return (
+    <ul className="mt-5 space-y-2.5 text-sm">
+      {list.map((f) => (
+        <li key={f} className="flex gap-2 text-muted-foreground">
+          <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+          <span>{f}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function Plan({ p, isGerman }: { p: (typeof single)[number]; isGerman: boolean }) {
   const isBest = !!p.best;
-  const { language } = useLanguage();
-  const isGerman = language === "de";
   const { open } = useOrderModal();
+  const [expanded, setExpanded] = useState(false);
+  const items = isGerman ? featuresDE : featuresEN;
+  const visible = 3;
+  const hidden = items.length - visible;
+
   return (
     <div
       className={`relative rounded-2xl border p-6 bg-surface/50 ${
@@ -38,16 +71,35 @@ function Plan({ p }: { p: (typeof single)[number] }) {
         <span className="text-4xl font-bold">{p.price}</span>
         <span className="text-sm text-muted-foreground mb-1.5">{p.per}</span>
       </div>
-      {p.sub && <div className="text-xs text-muted-foreground mt-1">{p.sub}</div>}
-      <ul className="mt-5 space-y-2.5 text-sm">
-        {(isGerman ? ["20.000+ internationale Sender (HD / FHD / 4K & UHD)", "Tausende Filme & Serien (FHD, 4K & HDR)", "Catch-Up TV auf den meisten Sendern"] : features).map((f) => (
-          <li key={f} className="flex gap-2 text-muted-foreground">
-            <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-            <span>{f}</span>
-          </li>
-        ))}
-      </ul>
-      <div className="text-xs text-muted-foreground mt-3">▾ {isGerman ? "3 weitere Funktionen anzeigen" : "Show 3 more features"}</div>
+      {p.sub && (
+        isBest ? (
+          <div className="mt-1 inline-block">
+            <span className="relative inline-block text-xs text-primary px-2.5 py-1 rounded-full border-2 border-destructive/70">
+              {p.sub}
+            </span>
+          </div>
+        ) : (
+          <div className="text-xs text-muted-foreground mt-1">{p.sub}</div>
+        )
+      )}
+      <FeatureList items={items} expanded={expanded} visible={visible} />
+      {hidden > 0 && (
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          className="mt-3 inline-flex items-center gap-1 text-xs text-primary hover:underline"
+        >
+          {expanded ? (
+            <>
+              <ChevronUp className="w-3.5 h-3.5" /> {isGerman ? "Weniger anzeigen" : "Show less"}
+            </>
+          ) : (
+            <>
+              <ChevronDown className="w-3.5 h-3.5" /> {isGerman ? `${hidden} weitere Funktionen anzeigen` : `Show ${hidden} more features`}
+            </>
+          )}
+        </button>
+      )}
       <button
         type="button"
         onClick={() => open(`${p.name} — ${p.price}`)}
@@ -64,11 +116,81 @@ function Plan({ p }: { p: (typeof single)[number] }) {
   );
 }
 
+function MultiPlan({ p, isGerman }: { p: (typeof multi)[number]; isGerman: boolean }) {
+  const { open } = useOrderModal();
+  const [expanded, setExpanded] = useState(false);
+  const items = isGerman ? featuresDE : featuresEN;
+  const visible = 2;
+  // For multi packs we add the "+ N free app activations" entry at the end
+  const all = [p.conn, ...items.slice(0, 5), p.extra];
+  const visibleCount = 1 + visible; // connection + first 2 features
+  const hidden = all.length - visibleCount;
+  const list = expanded ? all : all.slice(0, visibleCount);
+
+  return (
+    <div
+      className={`relative rounded-2xl border p-6 bg-surface/50 ${
+        p.reco ? "border-primary/60 bg-primary/5 shadow-glow" : "border-border"
+      }`}
+    >
+      {p.reco && (
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-wider px-3 py-1 rounded-full bg-gradient-primary text-primary-foreground font-semibold">
+          ✦ {isGerman ? "Empfohlen" : "Recommended"}
+        </div>
+      )}
+      <div className="font-semibold">{p.name}</div>
+      <div className="mt-3 flex items-end gap-1">
+        <span className="text-4xl font-bold">{p.price}</span>
+        <span className="text-sm text-muted-foreground mb-1.5">{p.per}</span>
+      </div>
+      <div className="text-xs text-primary mt-1">{p.sub}</div>
+      <ul className="mt-5 space-y-2.5 text-sm text-muted-foreground">
+        {list.map((f) => (
+          <li key={f} className="flex gap-2">
+            <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+            <span>{f}</span>
+          </li>
+        ))}
+      </ul>
+      {hidden > 0 && (
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          className="mt-3 inline-flex items-center gap-1 text-xs text-primary hover:underline"
+        >
+          {expanded ? (
+            <>
+              <ChevronUp className="w-3.5 h-3.5" /> {isGerman ? "Weniger anzeigen" : "Show less"}
+            </>
+          ) : (
+            <>
+              <ChevronDown className="w-3.5 h-3.5" /> {isGerman ? `${hidden} weitere Funktionen anzeigen` : `Show ${hidden} more features`}
+            </>
+          )}
+        </button>
+      )}
+      <button
+        type="button"
+        onClick={() => open(`${p.name} — ${p.price}/year`)}
+        className={`mt-5 w-full py-2.5 rounded-md font-medium ${
+          p.reco
+            ? "bg-gradient-primary text-primary-foreground"
+            : "bg-surface-2 hover:bg-surface-3 text-foreground"
+        } inline-flex items-center justify-center`}
+      >
+        {isGerman ? "Jetzt kaufen" : "Buy Now"}
+      </button>
+      <div className="text-xs text-center text-muted-foreground mt-3">
+        ⚡ {isGerman ? "Sofortaktivierung" : "Instant activation"}
+      </div>
+    </div>
+  );
+}
+
 export function Pricing() {
   const { language } = useLanguage();
   const isGerman = language === "de";
   const { open } = useOrderModal();
-  const translatedFeatures = isGerman ? ["20.000+ internationale Sender (HD / FHD / 4K & UHD)", "Tausende Filme & Serien (FHD, 4K & HDR)", "Catch-Up TV auf den meisten Sendern"] : features;
 
   return (
     <section className="mx-auto max-w-7xl px-6 py-20">
@@ -81,7 +203,9 @@ export function Pricing() {
         </h2>
         <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
           {isGerman ? "Noch nicht bereit? Du kannst vor dem Kauf einen " : "Not ready to commit yet? You can request a "}
-          <button type="button" onClick={() => open(isGerman ? "Kostenloser Test" : "Free Trial")} className="text-primary underline decoration-dotted">{isGerman ? "kostenlosen 1-Tages-Test" : "free 1-day trial"}</button>
+          <button type="button" onClick={() => open(isGerman ? "Kostenloser 1-Tages-Test" : "1 Free Day Trial")} className="text-primary underline decoration-dotted hover:decoration-solid">
+            {isGerman ? "kostenlosen 1-Tages-Test" : "1 free day trial"}
+          </button>
           {isGerman ? " anfordern — keine Zahlung nötig." : " before buying any plan — no payment needed."}
         </p>
         <p className="mt-3 text-xs text-muted-foreground">
@@ -95,7 +219,7 @@ export function Pricing() {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {single.map((p) => (
-            <Plan key={p.name} p={p} />
+            <Plan key={p.name} p={p} isGerman={isGerman} />
           ))}
         </div>
       </div>
@@ -106,50 +230,7 @@ export function Pricing() {
         </div>
         <div className="grid md:grid-cols-3 gap-5">
           {multi.map((p) => (
-            <div
-              key={p.name}
-              className={`relative rounded-2xl border p-6 bg-surface/50 ${
-                p.reco ? "border-primary/60 bg-primary/5 shadow-glow" : "border-border"
-              }`}
-            >
-              {p.reco && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-wider px-3 py-1 rounded-full bg-gradient-primary text-primary-foreground font-semibold">
-                  ✦ {isGerman ? "Empfohlen" : "Recommended"}
-                </div>
-              )}
-              <div className="font-semibold">{p.name}</div>
-              <div className="mt-3 flex items-end gap-1">
-                <span className="text-4xl font-bold">{p.price}</span>
-                <span className="text-sm text-muted-foreground mb-1.5">{p.per}</span>
-              </div>
-              <div className="text-xs text-primary mt-1">{p.sub}</div>
-              <ul className="mt-5 space-y-2.5 text-sm text-muted-foreground">
-                <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" /> {p.conn}
-                </li>
-                {translatedFeatures.slice(0, 2).map((f) => (
-                  <li key={f} className="flex gap-2">
-                    <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="text-xs text-muted-foreground mt-3">▾ {isGerman ? "4 weitere Funktionen anzeigen" : "Show 4 more features"}</div>
-              <button
-                type="button"
-                onClick={() => open(`${p.name} — ${p.price}/year`)}
-                className={`mt-5 w-full py-2.5 rounded-md font-medium ${
-                  p.reco
-                    ? "bg-gradient-primary text-primary-foreground"
-                    : "bg-surface-2 hover:bg-surface-3 text-foreground"
-                } inline-flex items-center justify-center`}
-              >
-                {isGerman ? "Jetzt kaufen" : "Buy Now"}
-              </button>
-              <div className="text-xs text-center text-muted-foreground mt-3">
-                ⚡ {isGerman ? "Sofortaktivierung" : "Instant activation"}
-              </div>
-            </div>
+            <MultiPlan key={p.name} p={p} isGerman={isGerman} />
           ))}
         </div>
       </div>
