@@ -73,8 +73,8 @@ function Plan({ p, isGerman }: { p: (typeof single)[number]; isGerman: boolean }
       </div>
       {p.sub && (
         isBest ? (
-          <div className="mt-1 inline-block">
-            <span className="relative inline-block text-xs text-primary px-2.5 py-1 rounded-full border-2 border-destructive/70">
+          <div className="mt-2 inline-block">
+            <span className="relative inline-flex px-3 py-1 text-xs font-semibold text-primary before:absolute before:-inset-x-2 before:-inset-y-1.5 before:rotate-[-5deg] before:rounded-[999px/70px] before:border-2 before:border-destructive/80 before:content-[''] after:absolute after:-inset-x-1.5 after:-inset-y-1 after:rotate-[3deg] after:rounded-[999px/70px] after:border after:border-destructive/45 after:content-['']">
               {p.sub}
             </span>
           </div>
