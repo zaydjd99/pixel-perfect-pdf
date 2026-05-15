@@ -58,29 +58,27 @@ function TutorialsPage() {
             <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-6">
               {isGerman ? "Wähle dein Gerät" : "Select your device"}
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
               {tutorials.map((d) => (
-                <div
+                <Link
                   key={d.slug}
+                  to="/tutorials/$device"
+                  params={{ device: d.slug }}
                   className="rounded-2xl border border-border bg-surface/50 p-6 hover:border-primary/40 transition group"
                 >
-                  <div className="aspect-[4/3] rounded-xl bg-surface-2 grid place-items-center mb-4 overflow-hidden">
+                  <div className="mx-auto mb-4 grid h-20 w-20 place-items-center overflow-hidden rounded-2xl border border-border bg-surface-2 md:h-24 md:w-24">
                     <img
                       src={d.image}
                       alt={d.name}
                       loading="lazy"
-                      className="w-full h-full object-contain p-3"
+                      className="h-full w-full object-contain p-2.5"
                     />
                   </div>
-                  <div className="font-semibold mb-3 text-sm">{d.name.split(" · ")[0].split(" / ")[0]}</div>
-                  <Link
-                    to="/tutorials/$device"
-                    params={{ device: d.slug }}
-                    className="w-full inline-flex items-center justify-center gap-2 text-xs uppercase tracking-wider px-3 py-2 rounded-md border border-border bg-surface-2/60 text-muted-foreground group-hover:text-primary group-hover:border-primary/40 transition"
-                  >
+                  <div className="mb-3 text-sm font-black text-white md:text-base">{d.name.split(" · ")[0].split(" / ")[0]}</div>
+                  <span className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface-2/60 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-muted-foreground transition group-hover:border-primary/40 group-hover:text-primary">
                     {isGerman ? "Setup-Anleitung" : "Setup Guide"} <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
+                  </span>
+                </Link>
               ))}
             </div>
           </div>
