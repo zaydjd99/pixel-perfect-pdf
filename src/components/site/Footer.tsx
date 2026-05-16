@@ -8,7 +8,7 @@ export function Footer() {
   const cols = [
     { h: isGerman ? "Entdecken" : "Explore", l: [{ label: isGerman ? "Preise" : "Pricing", to: "/pricing" }, { label: isGerman ? "Empfehlung" : "Referral", to: "/referral" }] },
     { h: isGerman ? "Hilfe" : "Help", l: [{ label: "Tutorials", to: "/tutorials" }, { label: "FAQs", to: "/faq" }, { label: isGerman ? "Kontakt" : "Contact", to: "/contact" }] },
-    { h: isGerman ? "Rechtliches" : "Legal", l: [{ label: isGerman ? "Datenschutz" : "Privacy Policy", to: "/faq" }, { label: isGerman ? "Nutzungsbedingungen" : "Terms of Service", to: "/faq" }, { label: isGerman ? "Rückerstattung" : "Refund Policy", to: "/faq" }] },
+    { h: isGerman ? "Rechtliches" : "Legal", l: [{ label: isGerman ? "Datenschutz" : "Privacy Policy", to: "/privacy" }, { label: isGerman ? "Nutzungsbedingungen" : "Terms of Service", to: "/terms" }, { label: isGerman ? "Rückerstattung" : "Refund Policy", to: "/refund" }] },
   ] as const;
   return (
     <footer className="border-t border-border/40 bg-surface/30">

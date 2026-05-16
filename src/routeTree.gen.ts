@@ -10,7 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TutorialsRouteImport } from './routes/tutorials'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as RefundRouteImport } from './routes/refund'
 import { Route as ReferralRouteImport } from './routes/referral'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -22,9 +25,24 @@ const TutorialsRoute = TutorialsRouteImport.update({
   path: '/tutorials',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RefundRoute = RefundRouteImport.update({
+  id: '/refund',
+  path: '/refund',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReferralRoute = ReferralRouteImport.update({
   id: '/referral',
   path: '/referral',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PricingRoute = PricingRouteImport.update({
@@ -58,7 +76,10 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/referral': typeof ReferralRoute
+  '/refund': typeof RefundRoute
+  '/terms': typeof TermsRoute
   '/tutorials': typeof TutorialsRouteWithChildren
   '/tutorials/$device': typeof TutorialsDeviceRoute
 }
@@ -67,7 +88,10 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/referral': typeof ReferralRoute
+  '/refund': typeof RefundRoute
+  '/terms': typeof TermsRoute
   '/tutorials': typeof TutorialsRouteWithChildren
   '/tutorials/$device': typeof TutorialsDeviceRoute
 }
@@ -77,7 +101,10 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/referral': typeof ReferralRoute
+  '/refund': typeof RefundRoute
+  '/terms': typeof TermsRoute
   '/tutorials': typeof TutorialsRouteWithChildren
   '/tutorials/$device': typeof TutorialsDeviceRoute
 }
@@ -88,7 +115,10 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/pricing'
+    | '/privacy'
     | '/referral'
+    | '/refund'
+    | '/terms'
     | '/tutorials'
     | '/tutorials/$device'
   fileRoutesByTo: FileRoutesByTo
@@ -97,7 +127,10 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/pricing'
+    | '/privacy'
     | '/referral'
+    | '/refund'
+    | '/terms'
     | '/tutorials'
     | '/tutorials/$device'
   id:
@@ -106,7 +139,10 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/pricing'
+    | '/privacy'
     | '/referral'
+    | '/refund'
+    | '/terms'
     | '/tutorials'
     | '/tutorials/$device'
   fileRoutesById: FileRoutesById
@@ -116,7 +152,10 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   PricingRoute: typeof PricingRoute
+  PrivacyRoute: typeof PrivacyRoute
   ReferralRoute: typeof ReferralRoute
+  RefundRoute: typeof RefundRoute
+  TermsRoute: typeof TermsRoute
   TutorialsRoute: typeof TutorialsRouteWithChildren
 }
 
@@ -129,11 +168,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TutorialsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refund': {
+      id: '/refund'
+      path: '/refund'
+      fullPath: '/refund'
+      preLoaderRoute: typeof RefundRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/referral': {
       id: '/referral'
       path: '/referral'
       fullPath: '/referral'
       preLoaderRoute: typeof ReferralRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pricing': {
@@ -191,9 +251,22 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   PricingRoute: PricingRoute,
+  PrivacyRoute: PrivacyRoute,
   ReferralRoute: ReferralRoute,
+  RefundRoute: RefundRoute,
+  TermsRoute: TermsRoute,
   TutorialsRoute: TutorialsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
