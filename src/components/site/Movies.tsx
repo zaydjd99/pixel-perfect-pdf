@@ -3,22 +3,27 @@ import { useState } from "react";
 import { useLanguage } from "@/lib/language";
 
 const posters = [
-  // Slide 1 — featured (matches reference screenshot)
-  "01313a8afee0e5d0bf29f8a654a1a8ea.webp", // Ghostbusters
-  "10d1f43206bddd0c6ff215b41863efc3.webp", // Task
-  "4-1-1.webp",                              // Hidden Figures
-  "5DM2wMt9nZUDnbE0zuGt2joigYd.webp",       // Furiosa
-  "7-1-1.webp",                              // Deadpool & Wolverine
-  // Slide 2
-  "9b7fc8e686026c8394e0be396e055078.webp", // Kingdom of the Planet of the Apes
-  "fG639Twc2QOYmrAVx3Onj864YHW.webp",       // One Piece
-  "a89pLcZGLZVwM8KTIs0BWprnMHt.webp",       // Alien Romulus
-  "6-min-1.webp",                            // Medieval
-  "f04b7cee0e021e7d60eb64543f87f9c2.webp", // Scream
-  // Slide 3
-  "9bc9500f2924843409a2eab9d158366d.webp", // Ellis
-  "a-man-called-otto.webp",                  // A Man Called Otto
-  "551196002d621d1281d1350100dda067.webp", // O Lado Bom de Ser Traída
+  // Featured — new posters from user upload
+  "movie-poster-1.webp",
+  "movie-poster-2.webp",
+  "movie-poster-3.webp",
+  "movie-05.webp",
+  "magic-mikes.webp",
+  "tinywow_Film_1_15266411-1.webp",
+  "tinywow_Film_2_15266479.webp",
+  "pkDiSsxBOfNz4IO3LqmztgM8xOe.webp",
+  "ymMaqwKN3Ovy9nlIRmk5GsnxEkx.webp",
+  "zCZJXSDPZKGml4I5zvxNpdx8jra.webp",
+  "tokyno-gfx-blachowicz-adesyana.webp",
+  // Existing catalogue
+  "5DM2wMt9nZUDnbE0zuGt2joigYd.webp",
+  "fG639Twc2QOYmrAVx3Onj864YHW.webp",
+  "a89pLcZGLZVwM8KTIs0BWprnMHt.webp",
+  "9b7fc8e686026c8394e0be396e055078.webp",
+  "6-min-1.webp",
+  "f04b7cee0e021e7d60eb64543f87f9c2.webp",
+  "9bc9500f2924843409a2eab9d158366d.webp",
+  "a-man-called-otto.webp",
 ];
 
 const PER_SLIDE = 5;

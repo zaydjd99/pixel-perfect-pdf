@@ -125,22 +125,25 @@ export function Header() {
               <X className="w-4 h-4" />
             </button>
           </div>
-          <nav className="flex flex-col px-6 py-6 gap-1">
+          <nav className="flex flex-col px-6 py-6 gap-3">
             {nav.map((n) => (
               <Link
                 key={n.en}
                 to={n.to}
                 onClick={() => setMobileOpen(false)}
-                className="px-3 py-3 rounded-lg text-base text-foreground hover:bg-surface transition"
-                activeProps={{ className: "bg-surface text-primary" }}
+                className="text-center px-4 py-3.5 rounded-full bg-surface/80 border border-border text-base font-semibold text-foreground hover:bg-surface-2 transition"
+                activeProps={{ className: "text-primary border-primary/40" }}
               >
                 {language === "de" ? n.de : n.en}
               </Link>
             ))}
+            <div className="mt-4 pt-5 border-t border-border/50 text-center text-xs text-muted-foreground">
+              {language === "de" ? "Schnelle Einrichtung. Sofortige Testversion per E-Mail." : "Fast setup. Instant trial by email."}
+            </div>
             <Link
               to="/pricing"
               onClick={() => setMobileOpen(false)}
-              className="mt-4 text-center text-sm font-medium px-4 py-3 rounded-md bg-gradient-primary text-primary-foreground shadow-glow"
+              className="text-center text-base font-semibold px-4 py-3.5 rounded-full bg-gradient-primary text-primary-foreground shadow-glow"
             >
               {language === "de" ? "Paket wählen" : "Get Package"}
             </Link>

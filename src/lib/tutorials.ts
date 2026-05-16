@@ -1,9 +1,11 @@
-import deviceFiretv from "@/assets/device-firetv.png";
-import deviceAndroid from "@/assets/device-android.png";
-import deviceApple from "@/assets/device-apple.png";
-import deviceWindows from "@/assets/device-windows.png";
-import deviceTv from "@/assets/device-tv.png";
-import deviceMag from "@/assets/device-mag.png";
+import deviceFiretv from "@/assets/dev-firestick.webp";
+import deviceAndroid from "@/assets/dev-android.webp";
+import deviceApple from "@/assets/dev-ios.webp";
+import deviceWindows from "@/assets/dev-pc.webp";
+import deviceTv from "@/assets/dev-smarttv.webp";
+import deviceLgTv from "@/assets/dev-smarttv-lg.webp";
+import deviceSamsungTv from "@/assets/dev-smarttv-samsung.webp";
+import deviceMag from "@/assets/dev-formuler.webp";
 
 export type TutorialStep = { title: string; body: string };
 export type TutorialMethod = { name: string; tag?: string; steps: TutorialStep[]; link?: { label: string; href: string } };
@@ -221,7 +223,7 @@ export const tutorials: Tutorial[] = [
   {
     slug: "lg-tv",
     name: "LG TV",
-    image: deviceTv,
+    image: deviceLgTv,
     subtitle: "Smart IPTV / SS IPTV · Takes less than 2 minutes",
     subtitleDe: "Smart IPTV / SS IPTV · Dauert weniger als 2 Minuten",
     intro: "Use Smart IPTV or SS IPTV on LG WebOS televisions.",
@@ -234,7 +236,7 @@ export const tutorials: Tutorial[] = [
   {
     slug: "samsung-tv",
     name: "Samsung TV",
-    image: deviceTv,
+    image: deviceSamsungTv,
     subtitle: "Smart IPTV · Takes less than 2 minutes",
     subtitleDe: "Smart IPTV · Dauert weniger als 2 Minuten",
     intro: "Use Smart IPTV on Samsung Tizen televisions.",
