@@ -32,6 +32,9 @@ export function Features() {
     <section className="mx-auto max-w-7xl px-6 py-20">
       <div className="text-center">
         <span className="inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary">
+          <span className="grid place-items-center w-3.5 h-3.5 rounded-full bg-primary text-primary-foreground">
+            <svg viewBox="0 0 12 12" className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 6.5 5 9l4.5-5.5"/></svg>
+          </span>
           {isGerman ? "Warum NEXASTREAM?" : "Why NEXASTREAM?"}
         </span>
         <h2 className="mt-4 text-3xl sm:text-4xl font-bold">
