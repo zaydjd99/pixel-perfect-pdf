@@ -8,10 +8,10 @@ export const Route = createFileRoute("/referral")({
   component: ReferralPage,
   head: () => ({
     meta: [
-      { title: "Referral Program — NEXASTREAM" },
+      { title: "Referral Program — TIVIPLANET" },
       { name: "description", content: "Invite friends and earn 1 free month for every 12 months they buy. No codes, no hassle." },
       { property: "og:title", content: "Invite friends. Get rewarded." },
-      { property: "og:description", content: "Refer someone to NexaStream and get free months added to your subscription." },
+      { property: "og:description", content: "Refer someone to TiviPlanet and get free months added to your subscription." },
     ],
   }),
 });
@@ -59,7 +59,7 @@ function ReferralPage() {
               <span className="text-gradient-green">Get rewarded.</span>
             </h1>
             <p className="mt-5 text-muted-foreground max-w-lg">
-              Refer someone to NexaStream. Once their subscription is confirmed, we add free months
+              Refer someone to TiviPlanet. Once their subscription is confirmed, we add free months
               directly to your account — no codes, no hassle.
             </p>
 
@@ -143,7 +143,7 @@ function ReferralPage() {
 
             <div className="mt-4 rounded-xl border border-border bg-surface-2/40 p-3 flex items-center gap-2 text-xs text-muted-foreground">
               <Users className="w-4 h-4 text-primary" />
-              Open to all existing customers with an active NexaStream subscription.
+              Open to all existing customers with an active TiviPlanet subscription.
             </div>
           </div>
         </div>

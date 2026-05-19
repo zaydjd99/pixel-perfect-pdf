@@ -3,6 +3,7 @@ import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { Movies } from "@/components/site/Movies";
 import { Channels } from "@/components/site/Channels";
+import { HowItWorks } from "@/components/site/HowItWorks";
 import { Pricing } from "@/components/site/Pricing";
 import { Devices } from "@/components/site/Devices";
 import { Features } from "@/components/site/Features";
@@ -15,7 +16,7 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "NEXASTREAM — Stream TV like never before" },
+      { title: "TIVIPLANET — Stream TV like never before" },
       {
         name: "description",
         content:
@@ -33,6 +34,7 @@ function Index() {
         <Hero />
         <Movies />
         <Channels />
+        <HowItWorks />
         <Pricing />
         <Devices />
         <Features />

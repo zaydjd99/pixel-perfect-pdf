@@ -35,7 +35,7 @@ export function Features() {
           <span className="grid place-items-center w-3.5 h-3.5 rounded-full bg-primary text-primary-foreground">
             <svg viewBox="0 0 12 12" className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 6.5 5 9l4.5-5.5"/></svg>
           </span>
-          {isGerman ? "Warum NEXASTREAM?" : "Why NEXASTREAM?"}
+          {isGerman ? "Warum TIVIPLANET?" : "Why TIVIPLANET?"}
         </span>
         <h2 className="mt-4 text-3xl sm:text-4xl font-bold">
           {isGerman ? "Alles was du für " : "Everything you need for "}<span className="text-gradient-green">{isGerman ? "perfektes Streaming brauchst" : "perfect streaming"}</span>

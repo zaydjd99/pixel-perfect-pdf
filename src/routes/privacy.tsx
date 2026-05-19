@@ -6,8 +6,8 @@ export const Route = createFileRoute("/privacy")({
   component: PrivacyPage,
   head: () => ({
     meta: [
-      { title: "Privacy Policy — NEXASTREAM" },
-      { name: "description", content: "How NEXASTREAM operates and protects your personal data." },
+      { title: "Privacy Policy — TIVIPLANET" },
+      { name: "description", content: "How TIVIPLANET operates and protects your personal data." },
     ],
     links: [{ rel: "canonical", href: "/privacy" }],
   }),

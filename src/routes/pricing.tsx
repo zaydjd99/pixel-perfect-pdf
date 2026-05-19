@@ -7,9 +7,9 @@ export const Route = createFileRoute("/pricing")({
   component: PricingPage,
   head: () => ({
     meta: [
-      { title: "Pricing — NEXASTREAM" },
+      { title: "Pricing — TIVIPLANET" },
       { name: "description", content: "Choose your perfect IPTV plan. From €5.83/month with 7-day money-back guarantee." },
-      { property: "og:title", content: "Pricing — NEXASTREAM" },
+      { property: "og:title", content: "Pricing — TIVIPLANET" },
       { property: "og:description", content: "Choose your perfect IPTV plan." },
     ],
   }),

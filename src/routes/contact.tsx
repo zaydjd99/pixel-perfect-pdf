@@ -9,9 +9,9 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
   head: () => ({
     meta: [
-      { title: "Contact — NEXASTREAM" },
-      { name: "description", content: "Contact NEXASTREAM support by WhatsApp, Telegram or email." },
-      { property: "og:title", content: "Contact — NEXASTREAM" },
+      { title: "Contact — TIVIPLANET" },
+      { name: "description", content: "Contact TIVIPLANET support by WhatsApp, Telegram or email." },
+      { property: "og:title", content: "Contact — TIVIPLANET" },
       { property: "og:description", content: "Contact support by WhatsApp, Telegram or email." },
     ],
   }),

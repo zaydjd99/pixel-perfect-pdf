@@ -67,7 +67,7 @@ export function CTA() {
           </div>
 
           <p className="mt-5 text-xs text-muted-foreground text-center">
-            {isGerman ? "Schließe dich tausenden zufriedenen Kunden an und teste NEXASTREAM heute." : "Join thousands of happy customers and try NEXASTREAM today."}
+            {isGerman ? "Schließe dich tausenden zufriedenen Kunden an und teste TIVIPLANET heute." : "Join thousands of happy customers and try TIVIPLANET today."}
           </p>
         </div>
       </div>

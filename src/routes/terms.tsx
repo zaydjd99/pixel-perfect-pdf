@@ -6,7 +6,7 @@ export const Route = createFileRoute("/terms")({
   component: TermsPage,
   head: () => ({
     meta: [
-      { title: "Terms of Service — NEXASTREAM" },
+      { title: "Terms of Service — TIVIPLANET" },
       { name: "description", content: "Please read these terms carefully. By using our services, you agree to these Terms of Service." },
     ],
     links: [{ rel: "canonical", href: "/terms" }],

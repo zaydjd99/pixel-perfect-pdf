@@ -6,8 +6,8 @@ export const Route = createFileRoute("/refund")({
   component: RefundPage,
   head: () => ({
     meta: [
-      { title: "Refund Policy — NEXASTREAM" },
-      { name: "description", content: "We aim to keep you fully satisfied. Here is how refunds work at NEXASTREAM." },
+      { title: "Refund Policy — TIVIPLANET" },
+      { name: "description", content: "We aim to keep you fully satisfied. Here is how refunds work at TIVIPLANET." },
     ],
     links: [{ rel: "canonical", href: "/refund" }],
   }),

@@ -34,7 +34,7 @@ export function Devices() {
           {isGerman ? "Verfügbar auf " : "Available on "}<span className="text-gradient-green">{isGerman ? "jedem Gerät" : "every device"}</span>{isGerman ? " das du besitzt" : " you own"}
         </h2>
         <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-          {isGerman ? "NEXASTREAM funktioniert auf all deinen Geräten. In wenigen Minuten einrichten und sofort streamen — ohne technisches Wissen." : "NEXASTREAM works on all your devices. Set up in minutes and start watching immediately — no technical knowledge required."}
+          {isGerman ? "TIVIPLANET funktioniert auf all deinen Geräten. In wenigen Minuten einrichten und sofort streamen — ohne technisches Wissen." : "TIVIPLANET works on all your devices. Set up in minutes and start watching immediately — no technical knowledge required."}
         </p>
       </div>
 

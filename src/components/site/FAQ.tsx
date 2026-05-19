@@ -42,7 +42,7 @@ export function FAQ() {
           {isGerman ? "Häufig gestellte " : "Frequently Asked "}<span className="text-gradient-green">{isGerman ? "Fragen" : "Questions"}</span>
         </h2>
         <p className="mt-4 text-muted-foreground">
-          {isGerman ? "Alles Wichtige zu NEXASTREAM. Keine Antwort gefunden? " : "Everything you need to know about NEXASTREAM. Can't find your answer? "}
+          {isGerman ? "Alles Wichtige zu TIVIPLANET. Keine Antwort gefunden? " : "Everything you need to know about TIVIPLANET. Can't find your answer? "}
           <Link to="/faq" className="text-primary underline">{isGerman ? "Vollständige FAQ-Seite anzeigen" : "View the full FAQ page"}</Link>.
         </p>
       </div>

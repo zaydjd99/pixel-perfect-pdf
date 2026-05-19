@@ -8,9 +8,9 @@ export const Route = createFileRoute("/faq")({
   component: FAQPage,
   head: () => ({
     meta: [
-      { title: "FAQ — NEXASTREAM" },
-      { name: "description", content: "Answers about NEXASTREAM subscriptions, setup, payments, devices and support." },
-      { property: "og:title", content: "FAQ — NEXASTREAM" },
+      { title: "FAQ — TIVIPLANET" },
+      { name: "description", content: "Answers about TIVIPLANET subscriptions, setup, payments, devices and support." },
+      { property: "og:title", content: "FAQ — TIVIPLANET" },
       { property: "og:description", content: "Answers about subscriptions, setup, payments, devices and support." },
     ],
   }),

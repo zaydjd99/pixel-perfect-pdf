@@ -2,13 +2,13 @@ import { Star } from "lucide-react";
 import { useLanguage } from "@/lib/language";
 
 const reviewsEN = [
-  { n: "Lukas Müller", l: "Switched from Sky", t: "I cancelled Netflix and Sky because NEXASTREAM has everything in one place. Massive VOD library, perfect stream quality. Best purchase in a long time!" },
+  { n: "Lukas Müller", l: "Switched from Sky", t: "I cancelled Netflix and Sky because TIVIPLANET has everything in one place. Massive VOD library, perfect stream quality. Best purchase in a long time!" },
   { n: "Sophie Schmidt", l: "Football fan", t: "All Champions League matches in 4K with zero buffering. The integrated VPN is a brilliant touch. Highly recommend." },
   { n: "Felix Wagner", l: "Family of 4", t: "Set it up on the kids' tablets, my Smart TV and my partner's phone in under 10 minutes. Support replied within minutes." },
 ];
 
 const reviewsDE = [
-  { n: "Lukas Müller", l: "Von Sky gewechselt", t: "Ich habe Netflix und Sky gekündigt, weil NEXASTREAM alles an einem Ort bietet. Riesige VOD-Bibliothek, perfekte Streamqualität. Bester Kauf seit langem!" },
+  { n: "Lukas Müller", l: "Von Sky gewechselt", t: "Ich habe Netflix und Sky gekündigt, weil TIVIPLANET alles an einem Ort bietet. Riesige VOD-Bibliothek, perfekte Streamqualität. Bester Kauf seit langem!" },
   { n: "Sophie Schmidt", l: "Fußball-Fan", t: "Alle Champions-League-Spiele in 4K ohne Buffering. Das integrierte VPN ist ein genialer Bonus. Sehr empfehlenswert." },
   { n: "Felix Wagner", l: "Familie mit 4", t: "In unter 10 Minuten auf den Tablets der Kinder, meinem Smart-TV und dem Handy meines Partners eingerichtet. Support antwortete in Minuten." },
 ];
@@ -28,7 +28,7 @@ export function Reviews() {
           {isGerman ? "Geliebt von " : "Loved by "}<span className="text-gradient-green">{isGerman ? "Kunden" : "customers"}</span>
         </h2>
         <p className="mt-4 text-muted-foreground">
-          {isGerman ? "Überzeuge dich selbst — das sagen unsere Kunden über NEXASTREAM." : "See for yourself — here's what our customers say about NEXASTREAM."}
+          {isGerman ? "Überzeuge dich selbst — das sagen unsere Kunden über TIVIPLANET." : "See for yourself — here's what our customers say about TIVIPLANET."}
         </p>
       </div>
 
