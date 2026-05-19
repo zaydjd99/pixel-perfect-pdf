@@ -1,4 +1,4 @@
-import { Play, ChevronDown, Menu, X, Check } from "lucide-react";
+import { ChevronDown, Menu, X, Check } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { useLanguage, type Language } from "@/lib/language";
@@ -8,6 +8,7 @@ const nav = [
   { en: "Pricing", de: "Preise", to: "/pricing" },
   { en: "Tutorials", de: "Tutorials", to: "/tutorials" },
   { en: "Referral", de: "Empfehlung", to: "/referral" },
+  { en: "Reseller", de: "Reseller", to: "/referral" },
   { en: "FAQ", de: "FAQ", to: "/faq" },
   { en: "Contact", de: "Kontakt", to: "/contact" },
 ] as const;
@@ -37,10 +38,15 @@ export function Header() {
     <header className="sticky top-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/40">
       <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 font-semibold tracking-wide text-primary">
-          <span className="grid place-items-center w-7 h-7 rounded-md bg-gradient-primary text-primary-foreground">
-            <Play className="w-3.5 h-3.5 fill-current" />
-          </span>
-          <span>NEXASTREAM</span>
+          <svg viewBox="0 0 120 24" className="h-6 w-auto" aria-label="TIVIPLANET">
+            <defs>
+              <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="oklch(0.78 0.18 152)" />
+                <stop offset="100%" stopColor="oklch(0.85 0.2 160)" />
+              </linearGradient>
+            </defs>
+            <text x="0" y="18" fill="url(#logo-gradient)" fontWeight="700" fontSize="16" fontFamily="Inter, system-ui, sans-serif">TIVIPLANET</text>
+          </svg>
         </Link>
 
         <nav className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
@@ -111,11 +117,16 @@ export function Header() {
         <div className="md:hidden fixed inset-0 z-[60] bg-background/95 backdrop-blur-md">
           <div className="flex items-center justify-between px-6 h-16 border-b border-border/40">
             <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 font-semibold text-primary">
-              <span className="grid place-items-center w-7 h-7 rounded-md bg-gradient-primary text-primary-foreground">
-                <Play className="w-3.5 h-3.5 fill-current" />
-              </span>
-              <span>NEXASTREAM</span>
-            </Link>
+            <svg viewBox="0 0 120 24" className="h-6 w-auto" aria-label="TIVIPLANET">
+              <defs>
+                <linearGradient id="logo-gradient-mobile" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="oklch(0.78 0.18 152)" />
+                  <stop offset="100%" stopColor="oklch(0.85 0.2 160)" />
+                </linearGradient>
+              </defs>
+              <text x="0" y="18" fill="url(#logo-gradient-mobile)" fontWeight="700" fontSize="16" fontFamily="Inter, system-ui, sans-serif">TIVIPLANET</text>
+            </svg>
+          </Link>
             <button
               type="button"
               onClick={() => setMobileOpen(false)}
